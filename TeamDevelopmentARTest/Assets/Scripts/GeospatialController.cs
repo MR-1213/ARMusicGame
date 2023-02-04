@@ -30,75 +30,25 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
     using UnityEngine.XR.ARFoundation;
     using UnityEngine.XR.ARSubsystems;
 
-    /// <summary>
-    /// Controller for Geospatial sample.
-    /// </summary>
+
     public class GeospatialController : MonoBehaviour
     {
         [Header("AR Components")]
 
-        /// <summary>
-        /// The ARSessionOrigin used in the sample.
-        /// </summary>
         public ARSessionOrigin SessionOrigin;
 
-        /// <summary>
-        /// The ARSession used in the sample.
-        /// </summary>
         public ARSession Session;
 
-        /// <summary>
-        /// The ARAnchorManager used in the sample.
-        /// </summary>
         public ARAnchorManager AnchorManager;
 
-        /// <summary>
-        /// The ARRaycastManager used in the sample.
-        /// </summary>
         public ARRaycastManager RaycastManager;
 
-        /// <summary>
-        /// The AREarthManager used in the sample.
-        /// </summary>
         public AREarthManager EarthManager;
 
-        /// <summary>
-        /// The ARCoreExtensions used in the sample.
-        /// </summary>
         public ARCoreExtensions ARCoreExtensions;
 
 
         [Header("UI Elements")]
-
-        /// <summary>
-        /// A 3D object that presents an Geospatial Anchor.
-        /// </summary>
-        //public GameObject QuadPrefab;
-
-        /// <summary>
-        /// A 3D object that present an Geospatial Terrain Anchor.
-        /// </summary>
-        //public GameObject TerrainPrefab;
-
-        /// <summary>
-        /// UI element showing VPS availability notification.
-        /// </summary>
-        //public GameObject VPSCheckCanvas;
-
-        /// <summary>
-        /// UI element containing all AR view contents.
-        /// </summary>
-        //public GameObject ARViewCanvas;
-
-        /// <summary>
-        /// UI element for adding a new anchor at current location.
-        /// </summary>
-        //public Button //SetPaintingButton;
-
-        /// <summary>
-        /// Text displaying in a snack bar at the bottom of the screen.
-        /// </summary>
-        //public Text SnackBarText;
 
         /// <summary>
         /// Help message shows while localizing.
@@ -153,57 +103,36 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// </summary>
         private const double _horizontalAccuracyThreshold = 20;
 
-        private bool _waitingForLocationService = false;
-        private bool _isInARView = false;
-        private bool _isReturning = false;
-        private bool _isLocalizing = false;
-        private bool _enablingGeospatial = false;
+        private bool waitingForLocationService = false;
+        private bool isInARView = false;
+        private bool isReturning = false;
+        private bool isLocalizing = false;
+        private bool enablingGeospatial = false;
 
         //private bool _usingTerrainAnchor = false;
-        private float _localizationPassedTime = 0f;
+        private float localizationPassedTime = 0f;
         private float _configurePrepareTime = 3f;
         private List<GameObject> _anchorObjects = new List<GameObject>();
-        private IEnumerator _startLocationService = null;
-        private IEnumerator _asyncCheck = null;
+        /// <summary>
+        /// StartLocationService()を管理するIEnumerator型の変数
+        /// </summary>
+        private IEnumerator startLocationService = null;
+
+        /// <summary>
+        /// AvailabilityCheck()を管理するIEnumerator型の変数
+        /// </summary>
+        private IEnumerator asyncCheck = null;
 
         //ロードしたデータを保存しておくリスト(データの型はGeospatialAnchorHistory)
-        private GeospatialAnchorHistoryCollection historyCollection = new GeospatialAnchorHistoryCollection();
-        private GeospatialAnchorHistory newHistory; //保存時に新たにFirebaseに保存される緯度経度高度方位と画像
-        //public getImage getimage;
-        //public changeImage changeimage;
-        //public Button SaveButton;
-        //public Texture2D paintTexture; //変換済みの画像のテクスチャが入る
-        //private bool isSetPainting; //画像を設置したかどうか
-        private double objLatitude = 0;
-        private double objLongitude = 0;
-        private double objAltitude = 0;
-        private Quaternion objHeading;
+        //private GeospatialAnchorHistoryCollection historyCollection = new GeospatialAnchorHistoryCollection();
+        //保存時に新たにFirebaseに保存される緯度経度高度方位と画像
+        //private GeospatialAnchorHistory newHistory;
 
         /// <summary>
-        /// Callback handling "Learn More" Button click event in Privacy Prompt.
-        /// </summary>
-        public void OnLearnMoreClicked()
-        {
-            Application.OpenURL(
-                "https://developers.google.com/ar/data-privacy");
-        }
-
-        /*
-        /// <summary>
-        /// Callback handling "Continue" button click event in AR View.
-        /// </summary>
-        public void OnContinueClicked()
-        {
-            VPSCheckCanvas.SetActive(false);
-        }
-        */
-
-        /// <summary>
-        /// Unity's Awake() method.
+        /// 起動後最初に1回だけ実行する
         /// </summary>
         public void Awake()
         {
-            
             // Lock screen to portrait.
             Screen.autorotateToLandscapeLeft = false;
             Screen.autorotateToLandscapeRight = false;
@@ -217,51 +146,51 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
             if (SessionOrigin == null)
             {
-                Debug.LogError("Cannot find ARSessionOrigin.");
+                Debug.LogError("ARSessionOriginがnullです.");
             }
 
             if (Session == null)
             {
-                Debug.LogError("Cannot find ARSession.");
+                Debug.LogError("ARSessionがnullです.");
             }
 
             if (ARCoreExtensions == null)
             {
-                Debug.LogError("Cannot find ARCoreExtensions.");
+                Debug.LogError("ARCoreExtensionsがnullです.");
             }
+
         }
 
         /// <summary>
-        /// Unity's OnEnable() method.
+        /// アタッチされたオブジェクトが有効になるたびに実行する。初回はAwake()より後に実行する。
         /// </summary>
         public void OnEnable()
         {
-            _startLocationService = StartLocationService();
-            StartCoroutine(_startLocationService);
+            //ロケーションサービスをスタート
+            startLocationService = StartLocationService();
+            StartCoroutine(startLocationService);
 
-            _isReturning = false;
-            _enablingGeospatial = false;
-            //SetPaintingButton.gameObject.SetActive(false);
-            //SaveButton.gameObject.SetActive(false);
-            _localizationPassedTime = 0f;
-            _isLocalizing = true;
-            //SnackBarText.text = _localizingMessage;
-
-            //getimage.getAllImage();
+            isReturning = false;
+            enablingGeospatial = false;
+            localizationPassedTime = 0f;
+            isLocalizing = true;
 
             SwitchToARView(true);
         }
 
         /// <summary>
-        /// Unity's OnDisable() method.
+        /// アタッチされたオブジェクトが無効になるたびに実行する。
         /// </summary>
         public void OnDisable()
         {
-            StopCoroutine(_asyncCheck);
-            _asyncCheck = null;
-            StopCoroutine(_startLocationService);
-            _startLocationService = null;
-            Debug.Log("Stop location services.");
+            //各機能の利用状況の確認を停止する
+            StopCoroutine(asyncCheck);
+            asyncCheck = null;
+            //ロケーションサービスの起動を停止する
+            StopCoroutine(startLocationService);
+            startLocationService = null;
+
+            Debug.Log("ロケーションサービスをストップします");
             Input.location.Stop();
 
             foreach (var anchor in _anchorObjects)
@@ -272,19 +201,16 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             _anchorObjects.Clear();
         }
 
-        /// <summary>
-        /// Unity's Update() method.
-        /// </summary>
         public void Update()
         {
-            if (!_isInARView)
+            if (!isInARView)
             {
                 return;
             }
 
             // Check session error status.
             LifecycleUpdate();
-            if (_isReturning)
+            if (isReturning)
             {
                 return;
             }
@@ -313,7 +239,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                         ARCoreExtensions.ARCoreExtensionsConfig.GeospatialMode =
                             GeospatialMode.Enabled;
                         _configurePrepareTime = 3.0f;
-                        _enablingGeospatial = true;
+                        enablingGeospatial = true;
                         return;
                     }
 
@@ -321,12 +247,12 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             }
 
             // Waiting for new configuration taking effect.
-            if (_enablingGeospatial)
+            if (enablingGeospatial)
             {
                 _configurePrepareTime -= Time.deltaTime;
                 if (_configurePrepareTime < 0)
                 {
-                    _enablingGeospatial = false;
+                    enablingGeospatial = false;
                 }
                 else
                 {
@@ -363,10 +289,10 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 pose.HorizontalAccuracy > _horizontalAccuracyThreshold)
             {
                 // Lost localization during the session.
-                if (!_isLocalizing)
+                if (!isLocalizing)
                 {
-                    _isLocalizing = true;
-                    _localizationPassedTime = 0f;
+                    isLocalizing = true;
+                    localizationPassedTime = 0f;
                     //SetPaintingButton.gameObject.SetActive(false);
                     //SaveButton.gameObject.SetActive(false);
                     foreach (var go in _anchorObjects)
@@ -375,22 +301,22 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                     }
                 }
 
-                if (_localizationPassedTime > _timeoutSeconds)
+                if (localizationPassedTime > _timeoutSeconds)
                 {
                     Debug.LogError("Geospatial sample localization passed timeout.");
                     //ReturnWithReason(_localizationFailureMessage);
                 }
                 else
                 {
-                    _localizationPassedTime += Time.deltaTime;
+                    localizationPassedTime += Time.deltaTime;
                     //SnackBarText.text = _localizationInstructionMessage;
                 }
             }
-            else if (_isLocalizing)
+            else if (isLocalizing)
             {
                 // Finished localization.
-                _isLocalizing = false;
-                _localizationPassedTime = 0f;
+                isLocalizing = false;
+                localizationPassedTime = 0f;
                 //SetPaintingButton.gameObject.SetActive(true);
                 //SaveButton.gameObject.SetActive(true);
                 //SnackBarText.text = _localizationSuccessMessage;
@@ -421,14 +347,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             //InfoPanel.SetActive(true);
         }
 
-        private void SetObjectLocation(GeospatialAnchorHistory history)
-        { 
-            objLatitude = history.Latitude;
-            objLongitude = history.Longitude;
-            objAltitude = history.Altitude;
-            objHeading = history.Heading;
-        }
-
         private IEnumerator CheckTerrainAnchorState(ARGeospatialAnchor anchor)
         {
             if (anchor == null || _anchorObjects == null)
@@ -457,7 +375,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             }
 
             anchor.gameObject.SetActive(
-                !_isLocalizing && anchor.terrainAnchorState == TerrainAnchorState.Success);
+                !isLocalizing && anchor.terrainAnchorState == TerrainAnchorState.Success);
             if (_anchorObjects.Last().Equals(anchor.gameObject))
             {
                 //SnackBarText.text = $"Terrain Anchor State: {anchor.terrainAnchorState}";
@@ -509,12 +427,13 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         }
         */
 
-        
+        /*
         public void SetHistory(float latitude, float longitude, float altitude, Quaternion quaternion, Texture2D texture)
         {
             GeospatialAnchorHistory history = new GeospatialAnchorHistory(latitude, longitude, altitude, quaternion, texture);
             historyCollection.Collection.Add(history);
         }
+        */
 
         /*
         private void ResolveHistory()
@@ -559,7 +478,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         /* セーブ機能関連 */
         /* セーブボタンを押すことでFirebaseにnewHistoryの情報を保存する */
-        
+        /*
         public void OnSaveButton(Texture2D paintTexture)
         {
             
@@ -584,24 +503,32 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
             //changeimage.SaveImageAndPath(coordinateDatas, newHistory.Heading, newHistory.Texture);
         }
+        */
         
-        
-
+        /// <summary>
+        /// enable=true : ARの画面に移行 / enable=false : ARの画面を停止
+        /// </summary>
+        /// <param name="enable"></param>
         private void SwitchToARView(bool enable)
         {
-            _isInARView = enable;
+            isInARView = enable;
+
             SessionOrigin.gameObject.SetActive(enable);
             Session.gameObject.SetActive(enable);
             ARCoreExtensions.gameObject.SetActive(enable);
-            //ARViewCanvas.SetActive(enable);
-            //VPSCheckCanvas.SetActive(false);
-            if (enable && _asyncCheck == null)
+
+            //各機能の利用可能状況を確認する
+            if (enable && asyncCheck == null)
             {
-                _asyncCheck = AvailabilityCheck();
-                StartCoroutine(_asyncCheck);
+                asyncCheck = AvailabilityCheck();
+                StartCoroutine(asyncCheck);
             }
         }
 
+        /// <summary>
+        /// ARSession.state/の利用可能状況を確認する
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator AvailabilityCheck()
         {
             if (ARSession.state == ARSessionState.None)
@@ -609,7 +536,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 yield return ARSession.CheckAvailability();
             }
 
-            // Waiting for ARSessionState.CheckingAvailability.
+            //ARSessionState.CheckingAvailabilityのために1フレーム停止させ、次のフレームから開始する
             yield return null;
 
             if (ARSession.state == ARSessionState.NeedsInstall)
@@ -617,17 +544,19 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 yield return ARSession.Install();
             }
 
-            // Waiting for ARSessionState.Installing.
+            //ARSessionState.Installingのために1フレーム停止させ、次のフレームから開始する
             yield return null;
 
 #if UNITY_ANDROID
+            //カメラを利用できるかを確認する
             if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
             {
-                Debug.Log("Requesting camera permission.");
+                Debug.Log("カメラの利用許可をリクエスト");
                 Permission.RequestUserPermission(Permission.Camera);
                 yield return new WaitForSeconds(3.0f);
             }
 
+            //カメラの許可のリクエストから3秒待ち、もう一度カメラが利用できるかを確認する
             if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
             {
                 // User has denied the request.
@@ -637,7 +566,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             }
 #endif
 
-            while (_waitingForLocationService)
+            //ロケーションサービスの起動ができるまで待機
+            while (waitingForLocationService)
             {
                 yield return null;
             }
@@ -650,7 +580,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             }
 
             // Update event is executed before coroutines so it checks the latest error states.
-            if (_isReturning)
+            if (isReturning)
             {
                 yield break;
             }
@@ -664,26 +594,32 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             //VPSCheckCanvas.SetActive(vpsAvailabilityPromise.Result != VpsAvailability.Available);
         }
 
+        /// <summary>
+        /// ロケーションサービスを起動する
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator StartLocationService()
         {
-            _waitingForLocationService = true;
+            //準備できるまでtrueにする
+            waitingForLocationService = true;
 #if UNITY_ANDROID
+            //位置情報を利用できるかを確認する
             if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
             {
-                Debug.Log("Requesting fine location permission.");
+                Debug.Log("位置情報の利用をリクエスト");
                 Permission.RequestUserPermission(Permission.FineLocation);
                 yield return new WaitForSeconds(3.0f);
             }
 #endif
-
+            //位置情報の利用が拒否されたとき
             if (!Input.location.isEnabledByUser)
             {
-                Debug.Log("Location service is disabled by User.");
-                _waitingForLocationService = false;
+                Debug.Log("ユーザーによって位置情報の利用が許可されませんでした");
+                waitingForLocationService = false;
                 yield break;
             }
 
-            Debug.Log("Start location service.");
+            Debug.Log("ロケーションサービスをスタートします");
             Input.location.Start();
 
             while (Input.location.status == LocationServiceStatus.Initializing)
@@ -691,13 +627,16 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 yield return null;
             }
 
-            _waitingForLocationService = false;
+            waitingForLocationService = false; //ロケーションサービスが起動したのでfalseに
+
+            //ロケーションサービスが停止した時
             if (Input.location.status != LocationServiceStatus.Running)
             {
                 Debug.LogWarningFormat(
                     "Location service ends with {0} status.", Input.location.status);
                 Input.location.Stop();
             }
+
         }
 
         private void LifecycleUpdate()
@@ -708,7 +647,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 Application.Quit();
             }
 
-            if (_isReturning)
+            if (isReturning)
             {
                 return;
             }

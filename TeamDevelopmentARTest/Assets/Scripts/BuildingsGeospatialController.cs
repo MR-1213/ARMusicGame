@@ -29,37 +29,36 @@ public class BuildingsGeospatialController : MonoBehaviour
         //UnityEditorではAREarthManagerが動作しないのでスキップ
         if (Application.isEditor)
         {
-            SetInfo("On Editor.");
+            Debug.Log("On Editor.");
             return;
         }
         
         //ARFoundationのトラッキング準備が完了するまで何もしない
         if (ARSession.state != ARSessionState.SessionTracking)
         {
-            SetInfo("ARSession.state is not ready.");
+            Debug.Log("ARSession.state is not ready.");
             return;
         }
         
         if (!IsSupportedDevice())
         {
-            SetInfo("This device is out of support GeoSpatial.");
+            Debug.Log("This device is out of support GeoSpatial.");
             return;
         }
 
         if (!IsHighAccuracyDeviceEarthPosition())
         {
-            SetInfo("Accuracy is low.");
+            Debug.Log("Accuracy is low.");
             return;
         }
         else
         {
-            SetInfo("Accuracy is High.");
+            Debug.Log("Accuracy is High.");
         }
         
         if (IsExistGeoSpatialAnchor(latitude, longitude, altitude))
         {
-            SetInfo("Adjust position and rotation.");
-            Debug.Log("都市モデルをセット");
+            Debug.Log("Adjust position and rotation.");
             Adjust();
         }
     }
@@ -99,14 +98,6 @@ public class BuildingsGeospatialController : MonoBehaviour
     }
 
     /// <summary>
-    /// アンカーの位置にオブジェクトを出す
-    /// </summary>
-    private void Adjust()
-    {
-        arObject.SetPositionAndRotation(anchor.transform.position,anchor.transform.rotation);
-    }
-
-    /// <summary>
     /// アンカーの存在を確認
     /// なければ追加
     /// </summary>
@@ -128,4 +119,13 @@ public class BuildingsGeospatialController : MonoBehaviour
 
         return anchor != null;
     }
+
+    /// <summary>
+    /// アンカーの位置にオブジェクトを出す
+    /// </summary>
+    private void Adjust()
+    {
+        arObject.SetPositionAndRotation(anchor.transform.position,anchor.transform.rotation);
+    }
+    
 }
