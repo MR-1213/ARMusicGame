@@ -1,0 +1,662 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+// 0x00000001 UnityEngine.GameObject AnchorCreator::get_AnchorPrefab()
+extern void AnchorCreator_get_AnchorPrefab_mBBAF7805E9D9F8D79408EE642D153BC76306B25A (void);
+// 0x00000002 System.Void AnchorCreator::set_AnchorPrefab(UnityEngine.GameObject)
+extern void AnchorCreator_set_AnchorPrefab_m53CC9CC3022C713826B44536B48B462C8A1FACFF (void);
+// 0x00000003 System.Void AnchorCreator::RemoveAllAnchors()
+extern void AnchorCreator_RemoveAllAnchors_m6BA302DD9EECA47969FD3F6E5397441DCB09ED21 (void);
+// 0x00000004 System.Void AnchorCreator::Awake()
+extern void AnchorCreator_Awake_m8820A3F157354D7EDED7B2D7CE2BFA42844F1F8E (void);
+// 0x00000005 System.Void AnchorCreator::Update()
+extern void AnchorCreator_Update_mA0A8BCCBAB0AE50DB087524E6273D11F1D6456D0 (void);
+// 0x00000006 System.Void AnchorCreator::.ctor()
+extern void AnchorCreator__ctor_m702B01425680D7FD1C9272A423AAF8A913E5476E (void);
+// 0x00000007 System.Void AnchorCreator::.cctor()
+extern void AnchorCreator__cctor_mDE519BED5D639DA8CD4FA7E389C3D97DF4BA54C4 (void);
+// 0x00000008 System.Single ARFeatheredPlaneMeshVisualizer::get_featheringWidth()
+extern void ARFeatheredPlaneMeshVisualizer_get_featheringWidth_m14D3A8BE3E9A745E6FD525B19ADDC892B8399B4D (void);
+// 0x00000009 System.Void ARFeatheredPlaneMeshVisualizer::set_featheringWidth(System.Single)
+extern void ARFeatheredPlaneMeshVisualizer_set_featheringWidth_mD616A09A3B426EA5DE1FA37334DD194E43EEC110 (void);
+// 0x0000000A System.Void ARFeatheredPlaneMeshVisualizer::Awake()
+extern void ARFeatheredPlaneMeshVisualizer_Awake_mC5DB0414A2514BF4851266C25141C903F0AC57BA (void);
+// 0x0000000B System.Void ARFeatheredPlaneMeshVisualizer::OnEnable()
+extern void ARFeatheredPlaneMeshVisualizer_OnEnable_m8781C85CFED871C8A81A5B88DB1031856E0FC9F0 (void);
+// 0x0000000C System.Void ARFeatheredPlaneMeshVisualizer::OnDisable()
+extern void ARFeatheredPlaneMeshVisualizer_OnDisable_m2343B05B1A8F14BAD4DD516C584281B66FE6A4E8 (void);
+// 0x0000000D System.Void ARFeatheredPlaneMeshVisualizer::ARPlane_boundaryUpdated(UnityEngine.XR.ARFoundation.ARPlaneBoundaryChangedEventArgs)
+extern void ARFeatheredPlaneMeshVisualizer_ARPlane_boundaryUpdated_mB3D9BBD14EA1FE3ECDBACC2DB89C1B110B8B6B5F (void);
+// 0x0000000E System.Void ARFeatheredPlaneMeshVisualizer::GenerateBoundaryUVs(UnityEngine.Mesh)
+extern void ARFeatheredPlaneMeshVisualizer_GenerateBoundaryUVs_mF756D3C1F7925A69CD8C7C8CCE56209AB321FEF5 (void);
+// 0x0000000F System.Void ARFeatheredPlaneMeshVisualizer::.ctor()
+extern void ARFeatheredPlaneMeshVisualizer__ctor_m9A77651BCAE58AA0B994FFF6C6B63B1CFF2729F6 (void);
+// 0x00000010 System.Void ARFeatheredPlaneMeshVisualizer::.cctor()
+extern void ARFeatheredPlaneMeshVisualizer__cctor_m56285A000EE27A1631BE9C5BCDA5C376E5D133C3 (void);
+// 0x00000011 System.Void BuildingsGeospatialController::Update()
+extern void BuildingsGeospatialController_Update_mEDE6EE8DD89CA6CDA04F8E5ABF9918E2D80D7D4F (void);
+// 0x00000012 System.Void BuildingsGeospatialController::SetInfo(System.String)
+extern void BuildingsGeospatialController_SetInfo_m53C10D83A432D275BE0E6FF40F769DF0B5BD0AEC (void);
+// 0x00000013 System.Boolean BuildingsGeospatialController::IsSupportedDevice()
+extern void BuildingsGeospatialController_IsSupportedDevice_m21B4545536607F712EEBDD126972239C7555B827 (void);
+// 0x00000014 System.Boolean BuildingsGeospatialController::IsHighAccuracyDeviceEarthPosition()
+extern void BuildingsGeospatialController_IsHighAccuracyDeviceEarthPosition_mF55C3573154AAF6A8176353E98B4F6BC10BF73BD (void);
+// 0x00000015 System.Void BuildingsGeospatialController::Adjust()
+extern void BuildingsGeospatialController_Adjust_mD9F930EE3EE7E386F25F89DA4616491C13D82623 (void);
+// 0x00000016 System.Boolean BuildingsGeospatialController::IsExistGeoSpatialAnchor(System.Double,System.Double,System.Double)
+extern void BuildingsGeospatialController_IsExistGeoSpatialAnchor_m41C399AB2F96B29D2C3EF88BF4C2B34093CF1DCA (void);
+// 0x00000017 System.Void BuildingsGeospatialController::.ctor()
+extern void BuildingsGeospatialController__ctor_m4EB21DF6EA9FCDE65E2F5268EC6AE8777DD7E6A6 (void);
+// 0x00000018 System.Void AspectKeeper::Start()
+extern void AspectKeeper_Start_m4C834763FF53D4F77283A0CE61A2A0A4C847AA4D (void);
+// 0x00000019 System.Void AspectKeeper::Update()
+extern void AspectKeeper_Update_mD550F5E79AA45A9F14F135ED6FF1FF3DA4D4ABEF (void);
+// 0x0000001A System.Void AspectKeeper::.ctor()
+extern void AspectKeeper__ctor_m0D8EE00986B14A9392C6004ACA7631B55DF76836 (void);
+// 0x0000001B System.Void Changescene::Start()
+extern void Changescene_Start_mD70DD87E87E2BA370E0D3FE8AC348435D5EDD09A (void);
+// 0x0000001C System.Void Changescene::ChangeScene()
+extern void Changescene_ChangeScene_mAF368881F5D063FF503403786013517963BB6A04 (void);
+// 0x0000001D System.Void Changescene::.ctor()
+extern void Changescene__ctor_mF5DBF7AE720A9F99BCB20FD1605896AD9A99A59C (void);
+// 0x0000001E System.Void Collsionmusic::Start()
+extern void Collsionmusic_Start_mC739F163E59F0BDB4C956EC08A10895C096D867E (void);
+// 0x0000001F System.Void Collsionmusic::OnTriggerEnter(UnityEngine.Collider)
+extern void Collsionmusic_OnTriggerEnter_mB2C37910A60451AC1EEE9FCCD029936D0E3A11CC (void);
+// 0x00000020 System.Void Collsionmusic::.ctor()
+extern void Collsionmusic__ctor_m24D567290EA04D246DD58525701F9C89475D37CA (void);
+// 0x00000021 System.Void ComboSm::Start()
+extern void ComboSm_Start_m98718464BAF9C11477E0EDE1033FAAED980816E7 (void);
+// 0x00000022 System.Void ComboSm::OnCollisionEnter(UnityEngine.Collision)
+extern void ComboSm_OnCollisionEnter_m7BE03F828010DBF6E04C5B2A69689E8B56B5519C (void);
+// 0x00000023 System.Void ComboSm::.ctor()
+extern void ComboSm__ctor_m73D64498E5A10D923000BBD08954697D8D913CFD (void);
+// 0x00000024 System.Void Combotext::SetCombotext()
+extern void Combotext_SetCombotext_m0F6918DB4C455AEB65212332928C0A6EFEA65CE5 (void);
+// 0x00000025 System.Void Combotext::Start()
+extern void Combotext_Start_m1EB18D8EBB110BDBB3C4B96526EE2BEC014385CC (void);
+// 0x00000026 System.Void Combotext::Update()
+extern void Combotext_Update_m3B39903D4004A01D25233D6D674C8FCDD7219447 (void);
+// 0x00000027 System.Void Combotext::.ctor()
+extern void Combotext__ctor_mAFA7E750FC6C2A99168E6D58AC37A129FA5C4630 (void);
+// 0x00000028 System.Void Destroy::OnCollisionEnter(UnityEngine.Collision)
+extern void Destroy_OnCollisionEnter_mC76B6BFCD5BC88F5968ED7816B9132AF532ACB10 (void);
+// 0x00000029 System.Void Destroy::.ctor()
+extern void Destroy__ctor_m413F23B3BA1D73EE1AAEB419EAC5307616BE5C39 (void);
+// 0x0000002A System.Void MinusComboSm::Start()
+extern void MinusComboSm_Start_m9FA6D6996231C29713EADA9EEB43A4D7328003CF (void);
+// 0x0000002B System.Void MinusComboSm::OnCollisionEnter(UnityEngine.Collision)
+extern void MinusComboSm_OnCollisionEnter_mA23C9D75E1B6445ED91DAC766093C506ACD9BEE3 (void);
+// 0x0000002C System.Void MinusComboSm::.ctor()
+extern void MinusComboSm__ctor_m4B3F3F29F1BFA2E3CA7443D52524BE452C526DCC (void);
+// 0x0000002D System.Void MinusScoregaugeManager::Start()
+extern void MinusScoregaugeManager_Start_mC1282039006E14A56D7E85D5292ED3BB24EE41FD (void);
+// 0x0000002E System.Void MinusScoregaugeManager::OnCollisionEnter(UnityEngine.Collision)
+extern void MinusScoregaugeManager_OnCollisionEnter_m4E3FD69481F4BE136F481C37D8FB68D595DFD3BA (void);
+// 0x0000002F System.Void MinusScoregaugeManager::.ctor()
+extern void MinusScoregaugeManager__ctor_mA701ED1F788FCB1484BB1EB2BAA708E2CC1792C7 (void);
+// 0x00000030 System.Void MinusScoreSm::Start()
+extern void MinusScoreSm_Start_mE4D9FF65DBB3512689025A0771981FC0F289ABF0 (void);
+// 0x00000031 System.Void MinusScoreSm::OnCollisionEnter(UnityEngine.Collision)
+extern void MinusScoreSm_OnCollisionEnter_m8E679150B3EBA6585F10C942C9C9E8C27056A915 (void);
+// 0x00000032 System.Void MinusScoreSm::.ctor()
+extern void MinusScoreSm__ctor_mA976DE949127BD58F55316F479A2854CE768AF5B (void);
+// 0x00000033 System.Void Musicboxslide::FixedUpdate()
+extern void Musicboxslide_FixedUpdate_m0BA8F1BEC53F9DE28E6EDB8ED8D94E79EABAF204 (void);
+// 0x00000034 System.Void Musicboxslide::.ctor()
+extern void Musicboxslide__ctor_m1D913CCE01132F601D1B59FD2891A4EEF3F1262B (void);
+// 0x00000035 System.Void Next1::Start()
+extern void Next1_Start_mD22214C0168CEDFD1F08B020BDA7F397409E355D (void);
+// 0x00000036 System.Void Next1::Open()
+extern void Next1_Open_mB21C2A699E6C8D0378CB9D4B9522B88C90F34FD4 (void);
+// 0x00000037 System.Void Next1::.ctor()
+extern void Next1__ctor_m54DE6C6F8BE0EF4D8A315A7E7561F2530E95A39A (void);
+// 0x00000038 System.Void Next2::Start()
+extern void Next2_Start_m2FF60DBB07D2B1870C3F31BF030A41CC1DDBF967 (void);
+// 0x00000039 System.Void Next2::Open()
+extern void Next2_Open_mFEBC98809412D843CB08FBA8DE4E01AE7ACE221A (void);
+// 0x0000003A System.Void Next2::.ctor()
+extern void Next2__ctor_m3B6EA4F2D902486D1EA74533084EEC246462CA01 (void);
+// 0x0000003B System.Void NonActive::OnTriggerEnter(UnityEngine.Collider)
+extern void NonActive_OnTriggerEnter_mDCA08D46FD62164205D9F9C27B1174C9A7F194ED (void);
+// 0x0000003C System.Void NonActive::.ctor()
+extern void NonActive__ctor_mF157059A2FD7AEF07B18A509CDF8028048B17971 (void);
+// 0x0000003D System.Void ScoregaugeManager::Start()
+extern void ScoregaugeManager_Start_m78C409E3A469D7C735199B98D2173435A922FF6F (void);
+// 0x0000003E System.Void ScoregaugeManager::OnCollisionEnter(UnityEngine.Collision)
+extern void ScoregaugeManager_OnCollisionEnter_m7EE942E2D6C1BC4113668D3B090A495C8C26DD8A (void);
+// 0x0000003F System.Void ScoregaugeManager::.ctor()
+extern void ScoregaugeManager__ctor_m09CC269CE006516B4D6B7CCCBEEE75995F1D3BF1 (void);
+// 0x00000040 System.Void ScoreSm::Start()
+extern void ScoreSm_Start_mC486374F303F72FD773B592C7518FB190D908A86 (void);
+// 0x00000041 System.Void ScoreSm::OnCollisionEnter(UnityEngine.Collision)
+extern void ScoreSm_OnCollisionEnter_mFB1ABF9F3796424DAECC30A0792A4E5BFB53564D (void);
+// 0x00000042 System.Void ScoreSm::.ctor()
+extern void ScoreSm__ctor_m6DD8490D38BB7F389637024083569274BDC35311 (void);
+// 0x00000043 System.Void Scoretext::SetScoretext()
+extern void Scoretext_SetScoretext_m708AA50AD2C152685CDBE36688E4D83CFEF47B1E (void);
+// 0x00000044 System.Void Scoretext::Start()
+extern void Scoretext_Start_m06483FFAA4DABFF74C5B2F476955FE57B6AED6DB (void);
+// 0x00000045 System.Void Scoretext::Update()
+extern void Scoretext_Update_mBEDE1E0F08C9EFCDE54DA042732370176185C5AF (void);
+// 0x00000046 System.Void Scoretext::.ctor()
+extern void Scoretext__ctor_m1B181933D96FF1EDC9EA48D98DEE381346F5D53D (void);
+// 0x00000047 System.Void Title::Start()
+extern void Title_Start_m7C4287FBCE727AF724A391DCD73B245F4F83F842 (void);
+// 0x00000048 System.Void Title::StartGame()
+extern void Title_StartGame_m7A64F4362F6CA60569D6D4D4D2CC1907D29E50FC (void);
+// 0x00000049 System.Void Title::.ctor()
+extern void Title__ctor_mD048B1928FB56935584ECB8B23993B2F8ED77772 (void);
+// 0x0000004A System.Void Trigger::PointerDown()
+extern void Trigger_PointerDown_m5888C9697E0C965C3C4BDECDAF5A3A77DF273D8A (void);
+// 0x0000004B System.Void Trigger::PointerUp()
+extern void Trigger_PointerUp_m234EE2D79B8906FEF696BF1044FADF42E8794BA7 (void);
+// 0x0000004C System.Void Trigger::.ctor()
+extern void Trigger__ctor_mB2B5CCC97EBE7BF658CA4ABA1BB9A02C964044F4 (void);
+// 0x0000004D System.Void DestroyNotes::OnCollisionEnter(UnityEngine.Collision)
+extern void DestroyNotes_OnCollisionEnter_mD39B0930B15593C8EE833C69FCA437279E397968 (void);
+// 0x0000004E System.Void DestroyNotes::.ctor()
+extern void DestroyNotes__ctor_m6EF0D707685A169CF6B5277F1A48C994376A85ED (void);
+// 0x0000004F System.Void FixPositionXZ::Start()
+extern void FixPositionXZ_Start_m3BBD9C4EC6AE29EB275F6C3298205E8E6C044A21 (void);
+// 0x00000050 System.Void FixPositionXZ::Update()
+extern void FixPositionXZ_Update_m7695871DE31C8C98C7A7CFCB49741BDCF95CB536 (void);
+// 0x00000051 System.Void FixPositionXZ::.ctor()
+extern void FixPositionXZ__ctor_m6A4F10DB883BE41AE908B19ED4A92154C452CE4F (void);
+// 0x00000052 System.Void NotesGenerator::Start()
+extern void NotesGenerator_Start_mF1A225DD2E9B99D533456D3F25C12365D9295B77 (void);
+// 0x00000053 System.Void NotesGenerator::OnStartButton()
+extern void NotesGenerator_OnStartButton_m3C7B8F1D85B536F8F59F95E6BA0D01BBC5E1C5E4 (void);
+// 0x00000054 System.Void NotesGenerator::EndGame()
+extern void NotesGenerator_EndGame_m4EA3ED97ACFFB430E4116D57168AE3AAB384D882 (void);
+// 0x00000055 System.Void NotesGenerator::GenerateNotes(System.Int32)
+extern void NotesGenerator_GenerateNotes_mC712C912FD2ABB3478BF9D887E4B6B4691E4E34E (void);
+// 0x00000056 System.Collections.IEnumerator NotesGenerator::GetRondomNum()
+extern void NotesGenerator_GetRondomNum_m9CB4431F3B45E9D8F7F1828605AC6C3B3CB2192E (void);
+// 0x00000057 System.Void NotesGenerator::.ctor()
+extern void NotesGenerator__ctor_mBC3AE490D6573E0B9ECAA83B188316052DB0B47F (void);
+// 0x00000058 System.Void NotesGenerator/<GetRondomNum>d__16::.ctor(System.Int32)
+extern void U3CGetRondomNumU3Ed__16__ctor_m13FD8C6FFACED9FD43CFC9C62AA18783CEFF1AEC (void);
+// 0x00000059 System.Void NotesGenerator/<GetRondomNum>d__16::System.IDisposable.Dispose()
+extern void U3CGetRondomNumU3Ed__16_System_IDisposable_Dispose_m2E44D58E5022D664E6853982D0DB137BF0F05FD5 (void);
+// 0x0000005A System.Boolean NotesGenerator/<GetRondomNum>d__16::MoveNext()
+extern void U3CGetRondomNumU3Ed__16_MoveNext_m226CD6B7F2192812A92D38AAF58959296C96A593 (void);
+// 0x0000005B System.Object NotesGenerator/<GetRondomNum>d__16::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CGetRondomNumU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m300F36B98E337525DA33AFE5873D36914CD682F5 (void);
+// 0x0000005C System.Void NotesGenerator/<GetRondomNum>d__16::System.Collections.IEnumerator.Reset()
+extern void U3CGetRondomNumU3Ed__16_System_Collections_IEnumerator_Reset_mBB0E8A12C8F7B4E21C51C686856AB65F95C3012B (void);
+// 0x0000005D System.Object NotesGenerator/<GetRondomNum>d__16::System.Collections.IEnumerator.get_Current()
+extern void U3CGetRondomNumU3Ed__16_System_Collections_IEnumerator_get_Current_m040B218B0132225700BFDB7FAABE762CA628D720 (void);
+// 0x0000005E System.Void NotesSlide::FixedUpdate()
+extern void NotesSlide_FixedUpdate_mAFD1EA6A606090E4C157E26DCBA297F6DA0E2B2A (void);
+// 0x0000005F System.Void NotesSlide::OnTriggerEnter(UnityEngine.Collider)
+extern void NotesSlide_OnTriggerEnter_m6FC6292725DCEF7D8BCAD1E476D3DCFB5C8E2E31 (void);
+// 0x00000060 System.Void NotesSlide::.ctor()
+extern void NotesSlide__ctor_mD7E17EAEC28727CC1A23578AB6D5B482DD60A27E (void);
+// 0x00000061 System.Void SwitchMaterial::Start()
+extern void SwitchMaterial_Start_m2AA5875F1B05AA4693C66EFE405A84AE14502FCF (void);
+// 0x00000062 System.Void SwitchMaterial::.ctor()
+extern void SwitchMaterial__ctor_m20E0623A18DDFDCDF2BCA35F9334699E774C7B6A (void);
+// 0x00000063 SROptions SROptions::get_Current()
+extern void SROptions_get_Current_m297117B6D80C587A2A12BC79EFD5ADE46D591C4B (void);
+// 0x00000064 System.Void SROptions::OnStartup()
+extern void SROptions_OnStartup_mED657444AD235B7BEB1764E5D0EB4C1794ED2281 (void);
+// 0x00000065 System.Void SROptions::add_PropertyChanged(SROptionsPropertyChanged)
+extern void SROptions_add_PropertyChanged_mD313CF8175CDEE6C8F50DE5E3DA93CAF1739BBE6 (void);
+// 0x00000066 System.Void SROptions::remove_PropertyChanged(SROptionsPropertyChanged)
+extern void SROptions_remove_PropertyChanged_m4C5C660100CDDEE462A1AEC5666351735CD0110D (void);
+// 0x00000067 System.Void SROptions::OnPropertyChanged(System.String)
+extern void SROptions_OnPropertyChanged_m06D97D7FDCBA5FA530183C0286626FC0AF5DC154 (void);
+// 0x00000068 System.Void SROptions::add_InterfacePropertyChangedEventHandler(System.ComponentModel.PropertyChangedEventHandler)
+extern void SROptions_add_InterfacePropertyChangedEventHandler_m21A6CBB25DFAD5BE13C1FBD23CDCEBC42AED9486 (void);
+// 0x00000069 System.Void SROptions::remove_InterfacePropertyChangedEventHandler(System.ComponentModel.PropertyChangedEventHandler)
+extern void SROptions_remove_InterfacePropertyChangedEventHandler_m57D2972F000CDECCB3EAC82AD237736BD311D7A6 (void);
+// 0x0000006A System.Void SROptions::System.ComponentModel.INotifyPropertyChanged.add_PropertyChanged(System.ComponentModel.PropertyChangedEventHandler)
+extern void SROptions_System_ComponentModel_INotifyPropertyChanged_add_PropertyChanged_m5B81598734579EEEF9AEDE807E67E5C9F424192E (void);
+// 0x0000006B System.Void SROptions::System.ComponentModel.INotifyPropertyChanged.remove_PropertyChanged(System.ComponentModel.PropertyChangedEventHandler)
+extern void SROptions_System_ComponentModel_INotifyPropertyChanged_remove_PropertyChanged_m67FA67A06599300AD83B0F88A7023233482772A9 (void);
+// 0x0000006C System.Void SROptions::.ctor()
+extern void SROptions__ctor_m2658C7CC2E53229F15959A748C31F5B638661753 (void);
+// 0x0000006D System.Void SROptions/DisplayNameAttribute::.ctor(System.String)
+extern void DisplayNameAttribute__ctor_m3AABB3EF231DE5C4596FBAC13A84359188956678 (void);
+// 0x0000006E System.Void SROptions/IncrementAttribute::.ctor(System.Double)
+extern void IncrementAttribute__ctor_m148ECDE23494DD90AAD74FC1517886B9EFBB0E33 (void);
+// 0x0000006F System.Void SROptions/NumberRangeAttribute::.ctor(System.Double,System.Double)
+extern void NumberRangeAttribute__ctor_mBC5F2BAC3D7020AF5E604C896FF65C2CC68E8969 (void);
+// 0x00000070 System.Void SROptions/SortAttribute::.ctor(System.Int32)
+extern void SortAttribute__ctor_m485398CBC990FD50C8BFE28A3794048630C0A49A (void);
+// 0x00000071 System.Void SROptionsPropertyChanged::.ctor(System.Object,System.IntPtr)
+extern void SROptionsPropertyChanged__ctor_m01880AAF1B112E453572A03A7781D1C7DFCB49EF (void);
+// 0x00000072 System.Void SROptionsPropertyChanged::Invoke(System.Object,System.String)
+extern void SROptionsPropertyChanged_Invoke_mBED662C3470F04FCEA839FE5D39A86BF62C22CFF (void);
+// 0x00000073 System.IAsyncResult SROptionsPropertyChanged::BeginInvoke(System.Object,System.String,System.AsyncCallback,System.Object)
+extern void SROptionsPropertyChanged_BeginInvoke_m8A103EB4F6093C48C1B1529A2248B630A22FC93D (void);
+// 0x00000074 System.Void SROptionsPropertyChanged::EndInvoke(System.IAsyncResult)
+extern void SROptionsPropertyChanged_EndInvoke_mD7173E1847CB61E5A7A394DBC9C2B76E0AB9D66C (void);
+// 0x00000075 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.SafeAreaScaler::Update()
+extern void SafeAreaScaler_Update_m4C02B57A221CB119573B865749FAEFB0E75F569A (void);
+// 0x00000076 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.SafeAreaScaler::MatchRectTransformToSafeArea()
+extern void SafeAreaScaler_MatchRectTransformToSafeArea_m04E6A9A1444C10EDDC3392285A1C5BE523BE8F64 (void);
+// 0x00000077 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.SafeAreaScaler::.ctor()
+extern void SafeAreaScaler__ctor_m61ED2F6F927714C4ED11AA2AEE2A0B9EA79B484B (void);
+// 0x00000078 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialAnchorHistory::.ctor(System.Double,System.Double,System.Double,UnityEngine.Quaternion,UnityEngine.Texture2D)
+extern void GeospatialAnchorHistory__ctor_m81E444540B48488C9F15D534E327744B291DFD50 (void);
+// 0x00000079 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialAnchorHistoryCollection::.ctor()
+extern void GeospatialAnchorHistoryCollection__ctor_mF8B2CC65BEF02F8F5AD9A6745E9DA6B05D7D06FA (void);
+// 0x0000007A System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::OnLearnMoreClicked()
+extern void GeospatialController_OnLearnMoreClicked_m30E869F7D9259B137402B70B9ECCE93CDD0996E1 (void);
+// 0x0000007B System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::Awake()
+extern void GeospatialController_Awake_mCA86E4AF23D51CFD648FE92B0A03D51B9BA0DC62 (void);
+// 0x0000007C System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::OnEnable()
+extern void GeospatialController_OnEnable_mEB3602FCCA7C89B722AFD4159D144A8DEEA618B9 (void);
+// 0x0000007D System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::OnDisable()
+extern void GeospatialController_OnDisable_m4494298A36B1BF602BC9839471386CC264FE50D1 (void);
+// 0x0000007E System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::Update()
+extern void GeospatialController_Update_m12FBC3C41C8B9B1060B6C586F36B51FA8315191E (void);
+// 0x0000007F System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::SetObjectLocation(Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialAnchorHistory)
+extern void GeospatialController_SetObjectLocation_mDEC1DACDA4207DC0C7913DA64BFF9C9392111167 (void);
+// 0x00000080 System.Collections.IEnumerator Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::CheckTerrainAnchorState(Google.XR.ARCoreExtensions.ARGeospatialAnchor)
+extern void GeospatialController_CheckTerrainAnchorState_mECBEC2C347FE65F6FFE796326250B8B6985FF19F (void);
+// 0x00000081 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::PlaceAnchorByScreenTap(UnityEngine.Vector2)
+extern void GeospatialController_PlaceAnchorByScreenTap_m021914E495D517012F09D3EDBA45CCD4E8DC54FB (void);
+// 0x00000082 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::SetHistory(System.Single,System.Single,System.Single,UnityEngine.Quaternion,UnityEngine.Texture2D)
+extern void GeospatialController_SetHistory_mBD298E820C8D1966B5231CDAB8353C98542DA70E (void);
+// 0x00000083 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::OnSaveButton(UnityEngine.Texture2D)
+extern void GeospatialController_OnSaveButton_m6BAF1561CA1813E90FF11918D67DD7908EB0D541 (void);
+// 0x00000084 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::SwitchToARView(System.Boolean)
+extern void GeospatialController_SwitchToARView_mFB94E97C62D009E13324C261E04900D34D47410E (void);
+// 0x00000085 System.Collections.IEnumerator Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::AvailabilityCheck()
+extern void GeospatialController_AvailabilityCheck_mBD33DAAFFBDF7259087853B4298004DAD5D86519 (void);
+// 0x00000086 System.Collections.IEnumerator Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::StartLocationService()
+extern void GeospatialController_StartLocationService_m72676812B8A1C07C07EAB8574995C827CF57DBB8 (void);
+// 0x00000087 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::LifecycleUpdate()
+extern void GeospatialController_LifecycleUpdate_m9DF865831BF6070D17D792ABD8948E03B692AC9C (void);
+// 0x00000088 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController::.ctor()
+extern void GeospatialController__ctor_m94BF4BBFAAEC1C97890C4E06BF04404FBE6D8FEC (void);
+// 0x00000089 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<CheckTerrainAnchorState>d__37::.ctor(System.Int32)
+extern void U3CCheckTerrainAnchorStateU3Ed__37__ctor_mEC9D57653E651E34C7AE89F1C2C33F0DCFA9E4D8 (void);
+// 0x0000008A System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<CheckTerrainAnchorState>d__37::System.IDisposable.Dispose()
+extern void U3CCheckTerrainAnchorStateU3Ed__37_System_IDisposable_Dispose_m23B7C3C5B8275F6FA2BD86B39A50271FADFC770C (void);
+// 0x0000008B System.Boolean Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<CheckTerrainAnchorState>d__37::MoveNext()
+extern void U3CCheckTerrainAnchorStateU3Ed__37_MoveNext_m6460B29616D00E573D428FED83B99D60CBA21127 (void);
+// 0x0000008C System.Object Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<CheckTerrainAnchorState>d__37::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CCheckTerrainAnchorStateU3Ed__37_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m01C5AC2CFB9EA3F58087484E0E62D4EA17EB4EBC (void);
+// 0x0000008D System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<CheckTerrainAnchorState>d__37::System.Collections.IEnumerator.Reset()
+extern void U3CCheckTerrainAnchorStateU3Ed__37_System_Collections_IEnumerator_Reset_m800BF6A8303EB86922125E84DC318C0508E6D9BA (void);
+// 0x0000008E System.Object Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<CheckTerrainAnchorState>d__37::System.Collections.IEnumerator.get_Current()
+extern void U3CCheckTerrainAnchorStateU3Ed__37_System_Collections_IEnumerator_get_Current_mB7DA6080575A3D17BB25A0D0F9C3A4E937F0DFE8 (void);
+// 0x0000008F System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<AvailabilityCheck>d__42::.ctor(System.Int32)
+extern void U3CAvailabilityCheckU3Ed__42__ctor_mAFA787AF5308FBFE21F238EA0B2627923D079261 (void);
+// 0x00000090 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<AvailabilityCheck>d__42::System.IDisposable.Dispose()
+extern void U3CAvailabilityCheckU3Ed__42_System_IDisposable_Dispose_mF5A87780CD2C36D8DD2237558437F8D195918A99 (void);
+// 0x00000091 System.Boolean Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<AvailabilityCheck>d__42::MoveNext()
+extern void U3CAvailabilityCheckU3Ed__42_MoveNext_mB469A6DED15DEC69FD50A1708E9283574609C7B9 (void);
+// 0x00000092 System.Object Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<AvailabilityCheck>d__42::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CAvailabilityCheckU3Ed__42_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEE90FD335B324A63E5E58D60182A039C8B972377 (void);
+// 0x00000093 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<AvailabilityCheck>d__42::System.Collections.IEnumerator.Reset()
+extern void U3CAvailabilityCheckU3Ed__42_System_Collections_IEnumerator_Reset_m6F5358DBE5F08013978AF50922557D7D06B99E4A (void);
+// 0x00000094 System.Object Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<AvailabilityCheck>d__42::System.Collections.IEnumerator.get_Current()
+extern void U3CAvailabilityCheckU3Ed__42_System_Collections_IEnumerator_get_Current_m83E6B14E534ADE11E17A755ED0AA75E004072D40 (void);
+// 0x00000095 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<StartLocationService>d__43::.ctor(System.Int32)
+extern void U3CStartLocationServiceU3Ed__43__ctor_mD1B4064EBF78246D5E3EB77228404A29834F211E (void);
+// 0x00000096 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<StartLocationService>d__43::System.IDisposable.Dispose()
+extern void U3CStartLocationServiceU3Ed__43_System_IDisposable_Dispose_m55A4E8C89C46F44D928B79D643FF680E2CC887EB (void);
+// 0x00000097 System.Boolean Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<StartLocationService>d__43::MoveNext()
+extern void U3CStartLocationServiceU3Ed__43_MoveNext_mFA92BBDA8E4A7B34DE045929423B707F1C810FD6 (void);
+// 0x00000098 System.Object Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<StartLocationService>d__43::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CStartLocationServiceU3Ed__43_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m54C609256F9CCD3E7FD1688FAB93B80FA890E12B (void);
+// 0x00000099 System.Void Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<StartLocationService>d__43::System.Collections.IEnumerator.Reset()
+extern void U3CStartLocationServiceU3Ed__43_System_Collections_IEnumerator_Reset_mAB4973C3EEF8255422286D387402C0302D3B334A (void);
+// 0x0000009A System.Object Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController/<StartLocationService>d__43::System.Collections.IEnumerator.get_Current()
+extern void U3CStartLocationServiceU3Ed__43_System_Collections_IEnumerator_get_Current_m6FE264ADCA94B9CC3C79999BAA0C804D5C9B997A (void);
+static Il2CppMethodPointer s_methodPointers[154] = 
+{
+	AnchorCreator_get_AnchorPrefab_mBBAF7805E9D9F8D79408EE642D153BC76306B25A,
+	AnchorCreator_set_AnchorPrefab_m53CC9CC3022C713826B44536B48B462C8A1FACFF,
+	AnchorCreator_RemoveAllAnchors_m6BA302DD9EECA47969FD3F6E5397441DCB09ED21,
+	AnchorCreator_Awake_m8820A3F157354D7EDED7B2D7CE2BFA42844F1F8E,
+	AnchorCreator_Update_mA0A8BCCBAB0AE50DB087524E6273D11F1D6456D0,
+	AnchorCreator__ctor_m702B01425680D7FD1C9272A423AAF8A913E5476E,
+	AnchorCreator__cctor_mDE519BED5D639DA8CD4FA7E389C3D97DF4BA54C4,
+	ARFeatheredPlaneMeshVisualizer_get_featheringWidth_m14D3A8BE3E9A745E6FD525B19ADDC892B8399B4D,
+	ARFeatheredPlaneMeshVisualizer_set_featheringWidth_mD616A09A3B426EA5DE1FA37334DD194E43EEC110,
+	ARFeatheredPlaneMeshVisualizer_Awake_mC5DB0414A2514BF4851266C25141C903F0AC57BA,
+	ARFeatheredPlaneMeshVisualizer_OnEnable_m8781C85CFED871C8A81A5B88DB1031856E0FC9F0,
+	ARFeatheredPlaneMeshVisualizer_OnDisable_m2343B05B1A8F14BAD4DD516C584281B66FE6A4E8,
+	ARFeatheredPlaneMeshVisualizer_ARPlane_boundaryUpdated_mB3D9BBD14EA1FE3ECDBACC2DB89C1B110B8B6B5F,
+	ARFeatheredPlaneMeshVisualizer_GenerateBoundaryUVs_mF756D3C1F7925A69CD8C7C8CCE56209AB321FEF5,
+	ARFeatheredPlaneMeshVisualizer__ctor_m9A77651BCAE58AA0B994FFF6C6B63B1CFF2729F6,
+	ARFeatheredPlaneMeshVisualizer__cctor_m56285A000EE27A1631BE9C5BCDA5C376E5D133C3,
+	BuildingsGeospatialController_Update_mEDE6EE8DD89CA6CDA04F8E5ABF9918E2D80D7D4F,
+	BuildingsGeospatialController_SetInfo_m53C10D83A432D275BE0E6FF40F769DF0B5BD0AEC,
+	BuildingsGeospatialController_IsSupportedDevice_m21B4545536607F712EEBDD126972239C7555B827,
+	BuildingsGeospatialController_IsHighAccuracyDeviceEarthPosition_mF55C3573154AAF6A8176353E98B4F6BC10BF73BD,
+	BuildingsGeospatialController_Adjust_mD9F930EE3EE7E386F25F89DA4616491C13D82623,
+	BuildingsGeospatialController_IsExistGeoSpatialAnchor_m41C399AB2F96B29D2C3EF88BF4C2B34093CF1DCA,
+	BuildingsGeospatialController__ctor_m4EB21DF6EA9FCDE65E2F5268EC6AE8777DD7E6A6,
+	AspectKeeper_Start_m4C834763FF53D4F77283A0CE61A2A0A4C847AA4D,
+	AspectKeeper_Update_mD550F5E79AA45A9F14F135ED6FF1FF3DA4D4ABEF,
+	AspectKeeper__ctor_m0D8EE00986B14A9392C6004ACA7631B55DF76836,
+	Changescene_Start_mD70DD87E87E2BA370E0D3FE8AC348435D5EDD09A,
+	Changescene_ChangeScene_mAF368881F5D063FF503403786013517963BB6A04,
+	Changescene__ctor_mF5DBF7AE720A9F99BCB20FD1605896AD9A99A59C,
+	Collsionmusic_Start_mC739F163E59F0BDB4C956EC08A10895C096D867E,
+	Collsionmusic_OnTriggerEnter_mB2C37910A60451AC1EEE9FCCD029936D0E3A11CC,
+	Collsionmusic__ctor_m24D567290EA04D246DD58525701F9C89475D37CA,
+	ComboSm_Start_m98718464BAF9C11477E0EDE1033FAAED980816E7,
+	ComboSm_OnCollisionEnter_m7BE03F828010DBF6E04C5B2A69689E8B56B5519C,
+	ComboSm__ctor_m73D64498E5A10D923000BBD08954697D8D913CFD,
+	Combotext_SetCombotext_m0F6918DB4C455AEB65212332928C0A6EFEA65CE5,
+	Combotext_Start_m1EB18D8EBB110BDBB3C4B96526EE2BEC014385CC,
+	Combotext_Update_m3B39903D4004A01D25233D6D674C8FCDD7219447,
+	Combotext__ctor_mAFA7E750FC6C2A99168E6D58AC37A129FA5C4630,
+	Destroy_OnCollisionEnter_mC76B6BFCD5BC88F5968ED7816B9132AF532ACB10,
+	Destroy__ctor_m413F23B3BA1D73EE1AAEB419EAC5307616BE5C39,
+	MinusComboSm_Start_m9FA6D6996231C29713EADA9EEB43A4D7328003CF,
+	MinusComboSm_OnCollisionEnter_mA23C9D75E1B6445ED91DAC766093C506ACD9BEE3,
+	MinusComboSm__ctor_m4B3F3F29F1BFA2E3CA7443D52524BE452C526DCC,
+	MinusScoregaugeManager_Start_mC1282039006E14A56D7E85D5292ED3BB24EE41FD,
+	MinusScoregaugeManager_OnCollisionEnter_m4E3FD69481F4BE136F481C37D8FB68D595DFD3BA,
+	MinusScoregaugeManager__ctor_mA701ED1F788FCB1484BB1EB2BAA708E2CC1792C7,
+	MinusScoreSm_Start_mE4D9FF65DBB3512689025A0771981FC0F289ABF0,
+	MinusScoreSm_OnCollisionEnter_m8E679150B3EBA6585F10C942C9C9E8C27056A915,
+	MinusScoreSm__ctor_mA976DE949127BD58F55316F479A2854CE768AF5B,
+	Musicboxslide_FixedUpdate_m0BA8F1BEC53F9DE28E6EDB8ED8D94E79EABAF204,
+	Musicboxslide__ctor_m1D913CCE01132F601D1B59FD2891A4EEF3F1262B,
+	Next1_Start_mD22214C0168CEDFD1F08B020BDA7F397409E355D,
+	Next1_Open_mB21C2A699E6C8D0378CB9D4B9522B88C90F34FD4,
+	Next1__ctor_m54DE6C6F8BE0EF4D8A315A7E7561F2530E95A39A,
+	Next2_Start_m2FF60DBB07D2B1870C3F31BF030A41CC1DDBF967,
+	Next2_Open_mFEBC98809412D843CB08FBA8DE4E01AE7ACE221A,
+	Next2__ctor_m3B6EA4F2D902486D1EA74533084EEC246462CA01,
+	NonActive_OnTriggerEnter_mDCA08D46FD62164205D9F9C27B1174C9A7F194ED,
+	NonActive__ctor_mF157059A2FD7AEF07B18A509CDF8028048B17971,
+	ScoregaugeManager_Start_m78C409E3A469D7C735199B98D2173435A922FF6F,
+	ScoregaugeManager_OnCollisionEnter_m7EE942E2D6C1BC4113668D3B090A495C8C26DD8A,
+	ScoregaugeManager__ctor_m09CC269CE006516B4D6B7CCCBEEE75995F1D3BF1,
+	ScoreSm_Start_mC486374F303F72FD773B592C7518FB190D908A86,
+	ScoreSm_OnCollisionEnter_mFB1ABF9F3796424DAECC30A0792A4E5BFB53564D,
+	ScoreSm__ctor_m6DD8490D38BB7F389637024083569274BDC35311,
+	Scoretext_SetScoretext_m708AA50AD2C152685CDBE36688E4D83CFEF47B1E,
+	Scoretext_Start_m06483FFAA4DABFF74C5B2F476955FE57B6AED6DB,
+	Scoretext_Update_mBEDE1E0F08C9EFCDE54DA042732370176185C5AF,
+	Scoretext__ctor_m1B181933D96FF1EDC9EA48D98DEE381346F5D53D,
+	Title_Start_m7C4287FBCE727AF724A391DCD73B245F4F83F842,
+	Title_StartGame_m7A64F4362F6CA60569D6D4D4D2CC1907D29E50FC,
+	Title__ctor_mD048B1928FB56935584ECB8B23993B2F8ED77772,
+	Trigger_PointerDown_m5888C9697E0C965C3C4BDECDAF5A3A77DF273D8A,
+	Trigger_PointerUp_m234EE2D79B8906FEF696BF1044FADF42E8794BA7,
+	Trigger__ctor_mB2B5CCC97EBE7BF658CA4ABA1BB9A02C964044F4,
+	DestroyNotes_OnCollisionEnter_mD39B0930B15593C8EE833C69FCA437279E397968,
+	DestroyNotes__ctor_m6EF0D707685A169CF6B5277F1A48C994376A85ED,
+	FixPositionXZ_Start_m3BBD9C4EC6AE29EB275F6C3298205E8E6C044A21,
+	FixPositionXZ_Update_m7695871DE31C8C98C7A7CFCB49741BDCF95CB536,
+	FixPositionXZ__ctor_m6A4F10DB883BE41AE908B19ED4A92154C452CE4F,
+	NotesGenerator_Start_mF1A225DD2E9B99D533456D3F25C12365D9295B77,
+	NotesGenerator_OnStartButton_m3C7B8F1D85B536F8F59F95E6BA0D01BBC5E1C5E4,
+	NotesGenerator_EndGame_m4EA3ED97ACFFB430E4116D57168AE3AAB384D882,
+	NotesGenerator_GenerateNotes_mC712C912FD2ABB3478BF9D887E4B6B4691E4E34E,
+	NotesGenerator_GetRondomNum_m9CB4431F3B45E9D8F7F1828605AC6C3B3CB2192E,
+	NotesGenerator__ctor_mBC3AE490D6573E0B9ECAA83B188316052DB0B47F,
+	U3CGetRondomNumU3Ed__16__ctor_m13FD8C6FFACED9FD43CFC9C62AA18783CEFF1AEC,
+	U3CGetRondomNumU3Ed__16_System_IDisposable_Dispose_m2E44D58E5022D664E6853982D0DB137BF0F05FD5,
+	U3CGetRondomNumU3Ed__16_MoveNext_m226CD6B7F2192812A92D38AAF58959296C96A593,
+	U3CGetRondomNumU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m300F36B98E337525DA33AFE5873D36914CD682F5,
+	U3CGetRondomNumU3Ed__16_System_Collections_IEnumerator_Reset_mBB0E8A12C8F7B4E21C51C686856AB65F95C3012B,
+	U3CGetRondomNumU3Ed__16_System_Collections_IEnumerator_get_Current_m040B218B0132225700BFDB7FAABE762CA628D720,
+	NotesSlide_FixedUpdate_mAFD1EA6A606090E4C157E26DCBA297F6DA0E2B2A,
+	NotesSlide_OnTriggerEnter_m6FC6292725DCEF7D8BCAD1E476D3DCFB5C8E2E31,
+	NotesSlide__ctor_mD7E17EAEC28727CC1A23578AB6D5B482DD60A27E,
+	SwitchMaterial_Start_m2AA5875F1B05AA4693C66EFE405A84AE14502FCF,
+	SwitchMaterial__ctor_m20E0623A18DDFDCDF2BCA35F9334699E774C7B6A,
+	SROptions_get_Current_m297117B6D80C587A2A12BC79EFD5ADE46D591C4B,
+	SROptions_OnStartup_mED657444AD235B7BEB1764E5D0EB4C1794ED2281,
+	SROptions_add_PropertyChanged_mD313CF8175CDEE6C8F50DE5E3DA93CAF1739BBE6,
+	SROptions_remove_PropertyChanged_m4C5C660100CDDEE462A1AEC5666351735CD0110D,
+	SROptions_OnPropertyChanged_m06D97D7FDCBA5FA530183C0286626FC0AF5DC154,
+	SROptions_add_InterfacePropertyChangedEventHandler_m21A6CBB25DFAD5BE13C1FBD23CDCEBC42AED9486,
+	SROptions_remove_InterfacePropertyChangedEventHandler_m57D2972F000CDECCB3EAC82AD237736BD311D7A6,
+	SROptions_System_ComponentModel_INotifyPropertyChanged_add_PropertyChanged_m5B81598734579EEEF9AEDE807E67E5C9F424192E,
+	SROptions_System_ComponentModel_INotifyPropertyChanged_remove_PropertyChanged_m67FA67A06599300AD83B0F88A7023233482772A9,
+	SROptions__ctor_m2658C7CC2E53229F15959A748C31F5B638661753,
+	DisplayNameAttribute__ctor_m3AABB3EF231DE5C4596FBAC13A84359188956678,
+	IncrementAttribute__ctor_m148ECDE23494DD90AAD74FC1517886B9EFBB0E33,
+	NumberRangeAttribute__ctor_mBC5F2BAC3D7020AF5E604C896FF65C2CC68E8969,
+	SortAttribute__ctor_m485398CBC990FD50C8BFE28A3794048630C0A49A,
+	SROptionsPropertyChanged__ctor_m01880AAF1B112E453572A03A7781D1C7DFCB49EF,
+	SROptionsPropertyChanged_Invoke_mBED662C3470F04FCEA839FE5D39A86BF62C22CFF,
+	SROptionsPropertyChanged_BeginInvoke_m8A103EB4F6093C48C1B1529A2248B630A22FC93D,
+	SROptionsPropertyChanged_EndInvoke_mD7173E1847CB61E5A7A394DBC9C2B76E0AB9D66C,
+	SafeAreaScaler_Update_m4C02B57A221CB119573B865749FAEFB0E75F569A,
+	SafeAreaScaler_MatchRectTransformToSafeArea_m04E6A9A1444C10EDDC3392285A1C5BE523BE8F64,
+	SafeAreaScaler__ctor_m61ED2F6F927714C4ED11AA2AEE2A0B9EA79B484B,
+	GeospatialAnchorHistory__ctor_m81E444540B48488C9F15D534E327744B291DFD50,
+	GeospatialAnchorHistoryCollection__ctor_mF8B2CC65BEF02F8F5AD9A6745E9DA6B05D7D06FA,
+	GeospatialController_OnLearnMoreClicked_m30E869F7D9259B137402B70B9ECCE93CDD0996E1,
+	GeospatialController_Awake_mCA86E4AF23D51CFD648FE92B0A03D51B9BA0DC62,
+	GeospatialController_OnEnable_mEB3602FCCA7C89B722AFD4159D144A8DEEA618B9,
+	GeospatialController_OnDisable_m4494298A36B1BF602BC9839471386CC264FE50D1,
+	GeospatialController_Update_m12FBC3C41C8B9B1060B6C586F36B51FA8315191E,
+	GeospatialController_SetObjectLocation_mDEC1DACDA4207DC0C7913DA64BFF9C9392111167,
+	GeospatialController_CheckTerrainAnchorState_mECBEC2C347FE65F6FFE796326250B8B6985FF19F,
+	GeospatialController_PlaceAnchorByScreenTap_m021914E495D517012F09D3EDBA45CCD4E8DC54FB,
+	GeospatialController_SetHistory_mBD298E820C8D1966B5231CDAB8353C98542DA70E,
+	GeospatialController_OnSaveButton_m6BAF1561CA1813E90FF11918D67DD7908EB0D541,
+	GeospatialController_SwitchToARView_mFB94E97C62D009E13324C261E04900D34D47410E,
+	GeospatialController_AvailabilityCheck_mBD33DAAFFBDF7259087853B4298004DAD5D86519,
+	GeospatialController_StartLocationService_m72676812B8A1C07C07EAB8574995C827CF57DBB8,
+	GeospatialController_LifecycleUpdate_m9DF865831BF6070D17D792ABD8948E03B692AC9C,
+	GeospatialController__ctor_m94BF4BBFAAEC1C97890C4E06BF04404FBE6D8FEC,
+	U3CCheckTerrainAnchorStateU3Ed__37__ctor_mEC9D57653E651E34C7AE89F1C2C33F0DCFA9E4D8,
+	U3CCheckTerrainAnchorStateU3Ed__37_System_IDisposable_Dispose_m23B7C3C5B8275F6FA2BD86B39A50271FADFC770C,
+	U3CCheckTerrainAnchorStateU3Ed__37_MoveNext_m6460B29616D00E573D428FED83B99D60CBA21127,
+	U3CCheckTerrainAnchorStateU3Ed__37_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m01C5AC2CFB9EA3F58087484E0E62D4EA17EB4EBC,
+	U3CCheckTerrainAnchorStateU3Ed__37_System_Collections_IEnumerator_Reset_m800BF6A8303EB86922125E84DC318C0508E6D9BA,
+	U3CCheckTerrainAnchorStateU3Ed__37_System_Collections_IEnumerator_get_Current_mB7DA6080575A3D17BB25A0D0F9C3A4E937F0DFE8,
+	U3CAvailabilityCheckU3Ed__42__ctor_mAFA787AF5308FBFE21F238EA0B2627923D079261,
+	U3CAvailabilityCheckU3Ed__42_System_IDisposable_Dispose_mF5A87780CD2C36D8DD2237558437F8D195918A99,
+	U3CAvailabilityCheckU3Ed__42_MoveNext_mB469A6DED15DEC69FD50A1708E9283574609C7B9,
+	U3CAvailabilityCheckU3Ed__42_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEE90FD335B324A63E5E58D60182A039C8B972377,
+	U3CAvailabilityCheckU3Ed__42_System_Collections_IEnumerator_Reset_m6F5358DBE5F08013978AF50922557D7D06B99E4A,
+	U3CAvailabilityCheckU3Ed__42_System_Collections_IEnumerator_get_Current_m83E6B14E534ADE11E17A755ED0AA75E004072D40,
+	U3CStartLocationServiceU3Ed__43__ctor_mD1B4064EBF78246D5E3EB77228404A29834F211E,
+	U3CStartLocationServiceU3Ed__43_System_IDisposable_Dispose_m55A4E8C89C46F44D928B79D643FF680E2CC887EB,
+	U3CStartLocationServiceU3Ed__43_MoveNext_mFA92BBDA8E4A7B34DE045929423B707F1C810FD6,
+	U3CStartLocationServiceU3Ed__43_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m54C609256F9CCD3E7FD1688FAB93B80FA890E12B,
+	U3CStartLocationServiceU3Ed__43_System_Collections_IEnumerator_Reset_mAB4973C3EEF8255422286D387402C0302D3B334A,
+	U3CStartLocationServiceU3Ed__43_System_Collections_IEnumerator_get_Current_m6FE264ADCA94B9CC3C79999BAA0C804D5C9B997A,
+};
+extern void GeospatialAnchorHistory__ctor_m81E444540B48488C9F15D534E327744B291DFD50_AdjustorThunk (void);
+static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
+{
+	{ 0x06000078, GeospatialAnchorHistory__ctor_m81E444540B48488C9F15D534E327744B291DFD50_AdjustorThunk },
+};
+static const int32_t s_InvokerIndices[154] = 
+{
+	6383,
+	5114,
+	6496,
+	6496,
+	6496,
+	6496,
+	12237,
+	6427,
+	5151,
+	6496,
+	6496,
+	6496,
+	4985,
+	5114,
+	6496,
+	12237,
+	6496,
+	5114,
+	6285,
+	6285,
+	6496,
+	1052,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	5114,
+	6496,
+	12237,
+	6496,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	5114,
+	6496,
+	12237,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	5114,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	5086,
+	6383,
+	6496,
+	5086,
+	6496,
+	6285,
+	6383,
+	6496,
+	6383,
+	6496,
+	5114,
+	6496,
+	6496,
+	6496,
+	12196,
+	12237,
+	5114,
+	5114,
+	5114,
+	5114,
+	5114,
+	5114,
+	5114,
+	6496,
+	5114,
+	5035,
+	2227,
+	5086,
+	2694,
+	2697,
+	827,
+	5114,
+	6496,
+	6496,
+	6496,
+	433,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	6496,
+	5058,
+	4500,
+	5204,
+	509,
+	5114,
+	5011,
+	6383,
+	6383,
+	6496,
+	6496,
+	5086,
+	6496,
+	6285,
+	6383,
+	6496,
+	6383,
+	5086,
+	6496,
+	6285,
+	6383,
+	6496,
+	6383,
+	5086,
+	6496,
+	6285,
+	6383,
+	6496,
+	6383,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
+const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
+{
+	"Assembly-CSharp.dll",
+	154,
+	s_methodPointers,
+	1,
+	s_adjustorThunks,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL, // module initializer,
+	NULL,
+	NULL,
+	NULL,
+};

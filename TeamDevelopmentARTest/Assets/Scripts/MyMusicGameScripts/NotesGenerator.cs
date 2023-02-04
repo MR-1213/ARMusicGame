@@ -37,6 +37,7 @@ public class NotesGenerator : MonoBehaviour
     public void EndGame()
     {
         isActive = false;
+        audioSource.Stop();
         startButton.SetActive(true);
     }
 
@@ -51,7 +52,7 @@ public class NotesGenerator : MonoBehaviour
         switch(num)
         {
             case 0:
-                Instantiate(notesOrange, roadOrange.transform.position, Quaternion.identity, gameQuad.transform);
+                Instantiate(notesOrange, roadOrange.transform.position, Quaternion.Euler(180f, 14.851f, 0f), gameQuad.transform);
                 break;
             case 1:
                 Instantiate(notesBlue, roadBlue.transform.position, Quaternion.identity, gameQuad.transform);
@@ -73,7 +74,7 @@ public class NotesGenerator : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(2.0f);
             int num;
             if(isActive)
             {
