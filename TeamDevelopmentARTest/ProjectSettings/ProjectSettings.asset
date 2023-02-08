@@ -156,6 +156,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.DefaultCompany.TeamDevelopmentARTest
     Standalone: com.DefaultCompany.com.unity.template.ar
   buildNumber:
     Standalone: 0

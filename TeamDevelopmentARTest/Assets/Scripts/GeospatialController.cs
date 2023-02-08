@@ -47,6 +47,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         public ARCoreExtensions ARCoreExtensions;
 
+        public NotesGenerator notesGenerator;
+
 
         [Header("UI Elements")]
 
@@ -54,19 +56,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// Help message shows while localizing.
         /// </summary>
         private const string _localizingMessage = "Localizing your device to set anchor.";
-
-        /// <summary>
-        /// Help message shows while initializing Geospatial functionalities.
-        /// </summary>
-        private const string _localizationInitializingMessage =
-            "Initializing Geospatial functionalities.";
-
-        /// <summary>
-        /// Help message shows when <see cref="AREarthManager.EarthTrackingState"/> is not tracking
-        /// or the pose accuracies are beyond thresholds.
-        /// </summary>
-        private const string _localizationInstructionMessage =
-            "Point your camera at buildings, stores, and signs near you.";
 
         /// <summary>
         /// Help message shows when location fails or hits timeout.
@@ -95,23 +84,26 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// <summary>
         /// Accuracy threshold for heading degree that can be treated as localization completed.
         /// </summary>
-        private const double _headingAccuracyThreshold = 25;
+        private const double headingAccuracyThreshold = 25;
 
         /// <summary>
         /// Accuracy threshold for altitude and longitude that can be treated as localization
         /// completed.
         /// </summary>
-        private const double _horizontalAccuracyThreshold = 20;
+        private const double horizontalAccuracyThreshold = 20;
 
+        //ロケーションサービスの起動を待っているかを表すbool値
         private bool waitingForLocationService = false;
+        //AR画面にいるかいないかを表すbool値
         private bool isInARView = false;
         private bool isReturning = false;
         private bool isLocalizing = false;
+        //Geospatialが利用可能になったかどうかを表すbool値
         private bool enablingGeospatial = false;
 
         //private bool _usingTerrainAnchor = false;
         private float localizationPassedTime = 0f;
-        private float _configurePrepareTime = 3f;
+        private float configurePrepareTime = 3f;
         private List<GameObject> _anchorObjects = new List<GameObject>();
         /// <summary>
         /// StartLocationService()を管理するIEnumerator型の変数
@@ -127,6 +119,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         //private GeospatialAnchorHistoryCollection historyCollection = new GeospatialAnchorHistoryCollection();
         //保存時に新たにFirebaseに保存される緯度経度高度方位と画像
         //private GeospatialAnchorHistory newHistory;
+
+        public Text debugText;
 
         /// <summary>
         /// 起動後最初に1回だけ実行する
@@ -192,53 +186,47 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
             Debug.Log("ロケーションサービスをストップします");
             Input.location.Stop();
-
-            foreach (var anchor in _anchorObjects)
-            {
-                Destroy(anchor);
-            }
-
-            _anchorObjects.Clear();
         }
 
         public void Update()
         {
+            //AR画面に移行していなければreturn
             if (!isInARView)
             {
                 return;
             }
 
-            // Check session error status.
+            //ARSessionのエラー状況を確認する
             LifecycleUpdate();
+
             if (isReturning)
             {
                 return;
             }
-
             if (ARSession.state != ARSessionState.SessionInitializing &&
                 ARSession.state != ARSessionState.SessionTracking)
             {
                 return;
             }
 
-            // Check feature support and enable Geospatial API when it's supported.
-            // 端末がGeospatialAPIの機能をサポートしているかどうか
+            // 端末がGeospatialAPIの機能をサポートしているかどうかを調べる
             var featureSupport = EarthManager.IsGeospatialModeSupported(GeospatialMode.Enabled);
             switch (featureSupport)
             {
                 case FeatureSupported.Unknown:
                     return;
+
                 case FeatureSupported.Unsupported:
-                    //ReturnWithReason("Geospatial API is not supported by this devices.");
                     return;
+
                 case FeatureSupported.Supported:
-                    if (ARCoreExtensions.ARCoreExtensionsConfig.GeospatialMode ==
-                        GeospatialMode.Disabled)
+                    if (ARCoreExtensions.ARCoreExtensionsConfig.GeospatialMode == GeospatialMode.Disabled)
                     {
-                        Debug.Log("Geospatial sample switched to GeospatialMode.Enabled.");
-                        ARCoreExtensions.ARCoreExtensionsConfig.GeospatialMode =
-                            GeospatialMode.Enabled;
-                        _configurePrepareTime = 3.0f;
+                        Debug.Log("GeospatialMode.Enabled に切り替わりました");
+                        ARCoreExtensions.ARCoreExtensionsConfig.GeospatialMode = GeospatialMode.Enabled;
+                        //新たな設定にかかる準備時間
+                        configurePrepareTime = 3.0f;
+                        //Geospatialが利用可能になったことを表すフラグ
                         enablingGeospatial = true;
                         return;
                     }
@@ -246,12 +234,13 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                     break;
             }
 
-            // Waiting for new configuration taking effect.
+            // 新たな設定が有効になるのを待つ
             if (enablingGeospatial)
             {
-                _configurePrepareTime -= Time.deltaTime;
-                if (_configurePrepareTime < 0)
+                configurePrepareTime -= Time.deltaTime;
+                if (configurePrepareTime < 0)
                 {
+                    //configurePrepareTimeに設定された時間が経過後に準備ができていなかったらfalse
                     enablingGeospatial = false;
                 }
                 else
@@ -260,148 +249,116 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 }
             }
 
-            // Check earth state.
+            //AREarthManagerの状況を確認する
             var earthState = EarthManager.EarthState;
             if (earthState == EarthState.ErrorEarthNotReady)
             {
-                //SnackBarText.text = _localizationInitializingMessage;
+                Debug.Log("Geospatial 機能を初期化する");
                 return;
             }
             else if (earthState != EarthState.Enabled)
             {
-                string errorMessage =
-                    "Geospatial sample encountered an EarthState error: " + earthState;
-                Debug.LogWarning(errorMessage);
-                //SnackBarText.text = errorMessage;
+                Debug.LogWarning("EarthState エラーが発生しました");
                 return;
             }
 
-            // Check earth localization.
-            bool isSessionReady = ARSession.state == ARSessionState.SessionTracking &&
-                Input.location.status == LocationServiceStatus.Running;
+            // ローカライゼーションを確認する
+            bool isSessionReady = (ARSession.state == ARSessionState.SessionTracking) && (Input.location.status == LocationServiceStatus.Running);
+
             var earthTrackingState = EarthManager.EarthTrackingState; 
-            var pose = earthTrackingState == TrackingState.Tracking ? 
-                EarthManager.CameraGeospatialPose : new GeospatialPose();
+            var pose = earthTrackingState == TrackingState.Tracking ? EarthManager.CameraGeospatialPose : new GeospatialPose();
             
             // Threshold:閾値 事前に設定した閾値以上では精度が低いためLost localizationとする
+            // isSessionReadyとearthTrackingStateがそれぞれtrue, TrackingState.Trackingでなければ同様にLost localizationとする
             if (!isSessionReady || earthTrackingState != TrackingState.Tracking ||
-                pose.HeadingAccuracy > _headingAccuracyThreshold ||
-                pose.HorizontalAccuracy > _horizontalAccuracyThreshold)
+                pose.HeadingAccuracy > headingAccuracyThreshold ||
+                pose.HorizontalAccuracy > horizontalAccuracyThreshold)
             {
-                // Lost localization during the session.
+                // Lost localization
+                //ローカライゼーションが完了していない、もしくは失ったとき
                 if (!isLocalizing)
                 {
                     isLocalizing = true;
                     localizationPassedTime = 0f;
-                    //SetPaintingButton.gameObject.SetActive(false);
-                    //SaveButton.gameObject.SetActive(false);
-                    foreach (var go in _anchorObjects)
-                    {
-                        go.SetActive(false);
-                    }
                 }
 
                 if (localizationPassedTime > _timeoutSeconds)
                 {
-                    Debug.LogError("Geospatial sample localization passed timeout.");
-                    //ReturnWithReason(_localizationFailureMessage);
+                    Debug.LogError("ローカライゼーションがタイムアウトしました");
                 }
                 else
                 {
+                    //ローカライゼーション中
                     localizationPassedTime += Time.deltaTime;
-                    //SnackBarText.text = _localizationInstructionMessage;
                 }
             }
             else if (isLocalizing)
             {
-                // Finished localization.
+                //ローカライゼーションが完了したとき
                 isLocalizing = false;
                 localizationPassedTime = 0f;
-                //SetPaintingButton.gameObject.SetActive(true);
-                //SaveButton.gameObject.SetActive(true);
-                //SnackBarText.text = _localizationSuccessMessage;
-                foreach (var go in _anchorObjects)
-                {
-                    var terrainState = go.GetComponent<ARGeospatialAnchor>().terrainAnchorState;
-                    if (terrainState != TerrainAnchorState.None &&
-                        terrainState != TerrainAnchorState.Success)
-                    {
-                        // Skip terrain anchors that are still waiting for resolving
-                        // or failed on resolving.
-                        continue;
-                    }
-
-                    go.SetActive(true);
-                }
 
                 //ResolveHistory();
-            }
-            else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began
-                && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+
+            }//EventSystem.current.IsPointerOverGameObject : uGUI操作中であればtrueになる。引数はスマホ等では必要
+            else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) && (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)))
             {
-                //EventSystem.current.IsPointerOverGameObject : uGUI操作中であればtrueになる。引数はスマホ等では必要
-                // Set anchor on screen tap.
-                PlaceAnchorByScreenTap(Input.GetTouch(0).position);
+                //スクリーンをタップしたとき
+                HandleScreenTap(Input.GetTouch(0).position);
             }
 
-            //InfoPanel.SetActive(true);
+            debugText.text = string.Format(
+                "Latitude/Longitude: {1}°, {2}°{0}" +
+                "Horizontal Accuracy: {3}m{0}" +
+                "Altitude: {4}m{0}" +
+                "Vertical Accuracy: {5}m{0}" +
+                "Heading: {6}°{0}" +
+                "Heading Accuracy: {7}°",
+                Environment.NewLine,
+                pose.Latitude.ToString("F6"),
+                pose.Longitude.ToString("F6"),
+                pose.HorizontalAccuracy.ToString("F6"),
+                pose.Altitude.ToString("F2"),
+                pose.VerticalAccuracy.ToString("F2"),
+                pose.Heading.ToString("F1"),
+                pose.HeadingAccuracy.ToString("F1")
+            );
         }
 
-        private IEnumerator CheckTerrainAnchorState(ARGeospatialAnchor anchor)
+        private void HandleScreenTap(Vector2 position)
         {
-            if (anchor == null || _anchorObjects == null)
-            {
-                yield break;
-            }
+            //mainCameraのタグがついたオブジェクト(カメラ)からレイを飛ばす
+            Ray ray = Camera.main.ScreenPointToRay(position);
+            RaycastHit hit;
 
-            int retry = 0;
-            while (anchor.terrainAnchorState == TerrainAnchorState.TaskInProgress)
+            if(Physics.Raycast(ray, out hit))
             {
-                if (_anchorObjects.Count == 0 || !_anchorObjects.Contains(anchor.gameObject))
+                if(hit.collider == null) return;
+                if(hit.collider.CompareTag("StartButton"))
                 {
-                    Debug.LogFormat(
-                        "{0} has been removed, exist terrain anchor state check.",
-                        anchor.trackableId);
-                    yield break;
+                    notesGenerator.OnStartButton();
+                    hit.collider.gameObject.SetActive(false);
                 }
-
-                if (retry == 100 && _anchorObjects.Last().Equals(anchor.gameObject))
-                {
-                    //SnackBarText.text = _resolvingTimeoutMessage;
-                }
-
-                yield return new WaitForSeconds(0.1f);
-                retry = Math.Min(retry + 1, 100);
             }
-
-            anchor.gameObject.SetActive(
-                !isLocalizing && anchor.terrainAnchorState == TerrainAnchorState.Success);
-            if (_anchorObjects.Last().Equals(anchor.gameObject))
-            {
-                //SnackBarText.text = $"Terrain Anchor State: {anchor.terrainAnchorState}";
-            }
-
-            yield break;
-        }
-
-        private void PlaceAnchorByScreenTap(Vector2 position)
-        {
+            /*
             List<ARRaycastHit> hitResults = new List<ARRaycastHit>();
-            RaycastManager.Raycast(
-                position, hitResults, TrackableType.Planes | TrackableType.FeaturePoint);
+            RaycastManager.Raycast(position, hitResults, TrackableType.Planes | TrackableType.FeaturePoint);
+
             if (hitResults.Count > 0)
             {
+                ARRaycastHit hit = hitResults[0];
                 GeospatialPose geospatialPose = EarthManager.Convert(hitResults[0].pose);
-                var myPose = EarthManager.CameraGeospatialPose;
-                /*
+                
                 GeospatialAnchorHistory history = new GeospatialAnchorHistory(
                     geospatialPose.Latitude, geospatialPose.Longitude, geospatialPose.Altitude,
                     myPose.Heading); 
 
                 var anchor = PlaceGeospatialAnchor(history, _usingTerrainAnchor);
-                */
+                
 
             }
+            */
+            
         }
 
         /*
@@ -426,84 +383,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             }
         }
         */
-
-        /*
-        public void SetHistory(float latitude, float longitude, float altitude, Quaternion quaternion, Texture2D texture)
-        {
-            GeospatialAnchorHistory history = new GeospatialAnchorHistory(latitude, longitude, altitude, quaternion, texture);
-            historyCollection.Collection.Add(history);
-        }
-        */
-
-        /*
-        private void ResolveHistory()
-        {
-            if(!(historyCollection.Collection.Count > 0))
-            {
-                Debug.Log("hitoryCollectionに何も入っていません");
-                return;
-            }
-            foreach(var history in historyCollection.Collection)
-            {
-                var anchor = AnchorManager.AddAnchor(history.Latitude, history.Longitude, history.Altitude, history.Heading);
-                GameObject PaintQuad = Instantiate(QuadPrefab, anchor.transform);
-                Material _Canvasmaterial = new Material(PaintQuad.GetComponent<Renderer>().material);
-                _Canvasmaterial.mainTexture = history.Texture;
-                PaintQuad.GetComponent<Renderer>().material = _Canvasmaterial;
-                anchor.gameObject.SetActive(true);
-                PaintQuad.SetActive(true);
-                _anchorObjects.Add(anchor.gameObject);
-                Debug.Log(PaintQuad.transform.position);
-            }
-            
-        }
-        */
-
-        
-        /* セーブ機能関連 */
-        /* 「画像を設置」ボタンを押すことで押した瞬間でのカメラの位置を取得、paintTextureとともに一時保存、画像の設置を行う */
-        /*
-        public void On//SetPaintingButton()
-        {
-            var pose = EarthManager.CameraGeospatialPose;
-            Quaternion quaternion = Quaternion.AngleAxis(180f - (float)pose.Heading, Vector3.up);
-            newHistory = new GeospatialAnchorHistory(pose.Latitude, pose.Longitude, pose.Altitude, quaternion, paintTexture);
-            PlaceGeospatialAnchor(newHistory);
-            SetObjectLocation(newHistory);
-            isSetPainting = true;
-            //SetPaintingButton.gameObject.SetActive(false);
-        }
-        */
-        
-
-        /* セーブ機能関連 */
-        /* セーブボタンを押すことでFirebaseにnewHistoryの情報を保存する */
-        /*
-        public void OnSaveButton(Texture2D paintTexture)
-        {
-            
-            Dictionary<string, object> coordinateDatas = new Dictionary<string, object> {
-                    
-                {"latitude", 0},
-                {"longitude", 0},
-                {"altitude", 0},
-            };
-            var pose = EarthManager.CameraGeospatialPose;
-            Quaternion quaternion = Quaternion.AngleAxis(180f - (float)pose.Heading, Vector3.up);
-            newHistory = new GeospatialAnchorHistory(pose.Latitude, pose.Longitude, pose.Altitude, quaternion, paintTexture);
-            
-            coordinateDatas["latitude"] = newHistory.Latitude;
-            coordinateDatas["longitude"] = newHistory.Longitude;
-            coordinateDatas["altitude"] = newHistory.Altitude;
-
-            Debug.Log(coordinateDatas["latitude"]);
-            Debug.Log(coordinateDatas["longitude"]);
-            Debug.Log(coordinateDatas["altitude"]);
-            Debug.Log(newHistory.Heading.ToString());
-
-            //changeimage.SaveImageAndPath(coordinateDatas, newHistory.Heading, newHistory.Texture);
-        }
-        */
         
         /// <summary>
         /// enable=true : ARの画面に移行 / enable=false : ARの画面を停止
@@ -511,6 +390,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// <param name="enable"></param>
         private void SwitchToARView(bool enable)
         {
+            //AR画面に移行したかのフラグ
             isInARView = enable;
 
             SessionOrigin.gameObject.SetActive(enable);
@@ -641,7 +521,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         private void LifecycleUpdate()
         {
-            // Pressing 'back' button quits the app.
+            //バックボタンをタップしたらアプリを終了させる
             if (Input.GetKeyUp(KeyCode.Escape))
             {
                 Application.Quit();
@@ -652,7 +532,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 return;
             }
 
-            // Only allow the screen to sleep when not tracking.
+            //トラッキングをしないときのみ、画面をスリープさせる
             var sleepTimeout = SleepTimeout.NeverSleep;
             if (ARSession.state != ARSessionState.SessionTracking)
             {
@@ -661,52 +541,24 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
             Screen.sleepTimeout = sleepTimeout;
 
-            // Quit the app if ARSession is in an error status.
+            // ARSession がエラー状態の場合、アプリを終了する
             string returningReason = string.Empty;
             if (ARSession.state != ARSessionState.CheckingAvailability &&
                 ARSession.state != ARSessionState.Ready &&
                 ARSession.state != ARSessionState.SessionInitializing &&
                 ARSession.state != ARSessionState.SessionTracking)
             {
-                returningReason = string.Format(
-                    "Geospatial sample encountered an ARSession error state {0}.\n" +
-                    "Please start the app again.",
-                    ARSession.state);
+                Debug.LogError("ARSession のエラー状態が発生しました。アプリを再起動してください。");
             }
             else if (Input.location.status == LocationServiceStatus.Failed)
             {
-                returningReason =
-                    "Geospatial sample failed to start location service.\n" +
-                    "Please start the app again and grant precise location permission.";
+                Debug.LogError("ロケーションサービスの開始に失敗しました。アプリを再起動し、正確な位置情報を許可してください。");
             }
             else if (SessionOrigin == null || Session == null || ARCoreExtensions == null)
             {
-                returningReason = string.Format(
-                    "Geospatial sample failed with missing AR Components.");
+                Debug.LogError("ARコンポーネントが見つかりません。");
             }
-
-            //ReturnWithReason(returningReason);
         }
 
-        /*
-        private void ReturnWithReason(string reason)
-        {
-            if (string.IsNullOrEmpty(reason))
-            {
-                return;
-            }
-
-            //SetPaintingButton.gameObject.SetActive(false);
-
-            Debug.LogError(reason);
-            SnackBarText.text = reason;
-        }
-        */
-        /*
-        private void QuitApplication()
-        {
-            Application.Quit();
-        }
-        */
     }
 }

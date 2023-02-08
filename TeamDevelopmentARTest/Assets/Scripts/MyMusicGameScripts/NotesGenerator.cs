@@ -17,28 +17,38 @@ public class NotesGenerator : MonoBehaviour
     [SerializeField] private GameObject notesOrange;
 
     public GameObject startButton;
+    public GameObject endButton;
     private AudioSource audioSource;
 
     private bool isActive = false;
 
     private void Start()
     {
+        //startButton.SetActive(false);
+        //endButton.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(GetRondomNum());
+    }
+
+    public void EnableStartButton(bool enable)
+    {
+        startButton.SetActive(enable);
     }
 
     public void OnStartButton()
     {
         isActive = true;
         startButton.SetActive(false);
+        endButton.SetActive(true);
         audioSource.Play();
     }
 
-    public void EndGame()
+    public void OnEndButton()
     {
         isActive = false;
         audioSource.Stop();
         startButton.SetActive(true);
+        endButton.SetActive(false);
     }
 
     private void GenerateNotes(int num)

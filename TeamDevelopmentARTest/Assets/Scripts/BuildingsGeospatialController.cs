@@ -11,18 +11,19 @@ public class BuildingsGeospatialController : MonoBehaviour
 {
     [SerializeField] private ARAnchorManager arAnchorManager;
     [SerializeField] private AREarthManager arEarthManager;
+    [SerializeField] private NotesGenerator notesGenerator;
     [SerializeField] private Transform arObject;
+    [SerializeField] private Transform gameQuad;
 
     [SerializeField] private double latitude;
     [SerializeField] private double longitude;
     [SerializeField] private double altitude;
-    
-    //[SerializeField] private Text statusText;
 
-    private const double VERTICAL_THRESHOLD = 25;
-    private const double HOLIZONTAL_THRESHOLD = 25;
+    private const double VERTICAL_THRESHOLD = 10;
+    private const double HOLIZONTAL_THRESHOLD = 10;
     
     private ARGeospatialAnchor anchor;
+    private ARGeospatialAnchor myAnchor;
 
     private void Update()
     {
@@ -61,11 +62,6 @@ public class BuildingsGeospatialController : MonoBehaviour
             Debug.Log("Adjust position and rotation.");
             Adjust();
         }
-    }
-
-    private void SetInfo(string info)
-    {
-        //statusText.text = info;
     }
 
     /// <summary>

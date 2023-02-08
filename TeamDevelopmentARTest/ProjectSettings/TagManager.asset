@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - resetbox
+  - StartButton
   layers:
   - Default
   - TransparentFX

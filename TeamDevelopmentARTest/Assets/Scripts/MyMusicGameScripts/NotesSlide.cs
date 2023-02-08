@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NotesSlide : MonoBehaviour
 {
-    float generatedTime = 0f;
     private void FixedUpdate()
     {
         //トランスフォームの取得
