@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NotesGenerator : MonoBehaviour
 {
+    public RhythmObject[] rhythmObject = new RhythmObject[3];
     [SerializeField] private GameObject gameQuad;
-
     [SerializeField] private GameObject roadOrange;
     [SerializeField] private GameObject roadBlue;
     [SerializeField] private GameObject roadGreen;
@@ -16,7 +16,6 @@ public class NotesGenerator : MonoBehaviour
     [SerializeField] private GameObject notesBlue;
     [SerializeField] private GameObject notesOrange;
 
-    public GameObject startButton;
     public GameObject endButton;
     private AudioSource audioSource;
 
@@ -24,31 +23,31 @@ public class NotesGenerator : MonoBehaviour
 
     private void Start()
     {
-        //startButton.SetActive(false);
-        //endButton.SetActive(false);
+        endButton.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(GetRondomNum());
-    }
-
-    public void EnableStartButton(bool enable)
-    {
-        startButton.SetActive(enable);
     }
 
     public void OnStartButton()
     {
         isActive = true;
-        startButton.SetActive(false);
         endButton.SetActive(true);
         audioSource.Play();
+        for(int i = 0; i < rhythmObject.Length; i++)
+        {
+            rhythmObject[i].IsActive(true);
+        }
     }
 
     public void OnEndButton()
     {
         isActive = false;
         audioSource.Stop();
-        startButton.SetActive(true);
         endButton.SetActive(false);
+        for(int i = 0; i < rhythmObject.Length; i++)
+        {
+            rhythmObject[i].IsActive(false);
+        }
     }
 
     private void GenerateNotes(int num)
