@@ -61,16 +61,16 @@ public class NotesGenerator : MonoBehaviour
         switch(num)
         {
             case 0:
-                Instantiate(notesOrange, roadOrange.transform.position, Quaternion.Euler(180f, 14.851f, 0f), gameQuad.transform);
+                Instantiate(notesOrange, roadOrange.transform.position + new Vector3(0, 5.0f, 0), Quaternion.Euler(180f, 14.851f, 0f), gameQuad.transform);
                 break;
             case 1:
-                Instantiate(notesBlue, roadBlue.transform.position, Quaternion.identity, gameQuad.transform);
+                Instantiate(notesBlue, roadBlue.transform.position + new Vector3(0, 5.0f, 0), Quaternion.identity, gameQuad.transform);
                 break;
             case 2:
-                Instantiate(notesGreen, roadGreen.transform.position, Quaternion.identity, gameQuad.transform);
+                Instantiate(notesGreen, roadGreen.transform.position + new Vector3(0, 5.0f, 0), Quaternion.identity, gameQuad.transform);
                 break;
             case 3:
-                Instantiate(notesPink, roadPink.transform.position, Quaternion.identity, gameQuad.transform);
+                Instantiate(notesPink, roadPink.transform.position + new Vector3(0, 5.0f, 0), Quaternion.identity, gameQuad.transform);
                 break;
             case 4:
                 break; //StartButtonを押すまで何も生成しない。
