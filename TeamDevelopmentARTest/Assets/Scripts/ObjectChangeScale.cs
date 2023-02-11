@@ -12,17 +12,20 @@ public class ObjectChangeScale : MonoBehaviour
         switch(objName)
         {
             case "OnpuText":
-                scaleValue = 0.5f;
+                scaleValue = 1.5f;
                 break;
             case "Onpu2Text":
-                scaleValue = 2.0f;
+                scaleValue = 0.5f;
                 break;
             default:
                 Debug.LogError("想定されている名前でないオブジェクトがあります");
                 break;
         }
 
-        transform.DOScale(new Vector3(scaleValue, scaleValue, scaleValue), 2.0f).SetLoops(-1, LoopType.Yoyo);
+        transform.DOScale(new Vector3(this.transform.localScale.x * scaleValue,
+                                      this.transform.localScale.y * scaleValue,
+                                      this.transform.localScale.z * scaleValue), 2.0f)
+                                      .SetLoops(-1, LoopType.Yoyo);
         
     }
     

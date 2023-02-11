@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NotesGenerator : MonoBehaviour
 {
+    [SerializeField] private SoundController soundController;
     public RhythmObject[] rhythmObject = new RhythmObject[3];
     [SerializeField] private GameObject gameQuad;
     [SerializeField] private GameObject roadOrange;
@@ -17,14 +18,11 @@ public class NotesGenerator : MonoBehaviour
     [SerializeField] private GameObject notesOrange;
 
     public GameObject endButton;
-    private AudioSource audioSource;
-
     private bool isActive = false;
 
     private void Start()
     {
         endButton.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
         StartCoroutine(GetRondomNum());
     }
 
@@ -32,7 +30,7 @@ public class NotesGenerator : MonoBehaviour
     {
         isActive = true;
         endButton.SetActive(true);
-        audioSource.Play();
+        soundController.MusicPlay();
         for(int i = 0; i < rhythmObject.Length; i++)
         {
             rhythmObject[i].IsActive(true);
@@ -42,7 +40,7 @@ public class NotesGenerator : MonoBehaviour
     public void OnEndButton()
     {
         isActive = false;
-        audioSource.Stop();
+        soundController.MusicStop();
         endButton.SetActive(false);
         for(int i = 0; i < rhythmObject.Length; i++)
         {

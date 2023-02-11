@@ -30,31 +30,23 @@ public class BuildingsGeospatialController : MonoBehaviour
         //UnityEditorではAREarthManagerが動作しないのでスキップ
         if (Application.isEditor)
         {
-            Debug.Log("On Editor.");
             return;
         }
         
         //ARFoundationのトラッキング準備が完了するまで何もしない
         if (ARSession.state != ARSessionState.SessionTracking)
         {
-            Debug.Log("ARSession.state is not ready.");
             return;
         }
         
         if (!IsSupportedDevice())
         {
-            Debug.Log("This device is out of support GeoSpatial.");
             return;
         }
 
         if (!IsHighAccuracyDeviceEarthPosition())
         {
-            Debug.Log("Accuracy is low.");
             return;
-        }
-        else
-        {
-            Debug.Log("Accuracy is High.");
         }
         
         if (IsExistGeoSpatialAnchor(latitude, longitude, altitude))

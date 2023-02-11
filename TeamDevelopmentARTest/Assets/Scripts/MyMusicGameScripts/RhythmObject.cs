@@ -36,6 +36,18 @@ public class RhythmObject : MonoBehaviour
                 MinimumRangeValue = 3;
                 MaximumRangeValue = 7;
                 break;
+            case "Gold2":
+                MinimumRangeValue = 5;
+                MaximumRangeValue = 9;
+                break;
+            case "Red2":
+                MinimumRangeValue = 1;
+                MaximumRangeValue = 5;
+                break;
+            case "Blue2":
+                MinimumRangeValue = 3;
+                MaximumRangeValue = 6;
+                break;
         }
 
         StartCoroutine(Rhythm());
@@ -79,6 +91,7 @@ public class RhythmObject : MonoBehaviour
 
                 if(objectIndex <= index)
                 {
+                    Debug.Log(this.gameObject.name + ":" + child.gameObject.name + ":" + objectIndex);
                     activeObjects.Add(objectIndex, child.gameObject);
                 }
             }
