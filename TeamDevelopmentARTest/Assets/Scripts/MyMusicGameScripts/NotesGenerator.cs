@@ -17,19 +17,19 @@ public class NotesGenerator : MonoBehaviour
     [SerializeField] private GameObject notesBlue;
     [SerializeField] private GameObject notesOrange;
 
-    public GameObject endButton;
+    //public GameObject endButton;
     private bool isActive = false;
 
     private void Start()
     {
-        endButton.SetActive(false);
+        //endButton.SetActive(false);
         StartCoroutine(GetRondomNum());
     }
 
     public void OnStartButton()
     {
         isActive = true;
-        endButton.SetActive(true);
+        //endButton.SetActive(true);
         soundController.MusicPlay();
         for(int i = 0; i < rhythmObject.Length; i++)
         {
@@ -41,7 +41,7 @@ public class NotesGenerator : MonoBehaviour
     {
         isActive = false;
         soundController.MusicStop();
-        endButton.SetActive(false);
+        //endButton.SetActive(false);
         for(int i = 0; i < rhythmObject.Length; i++)
         {
             rhythmObject[i].IsActive(false);
