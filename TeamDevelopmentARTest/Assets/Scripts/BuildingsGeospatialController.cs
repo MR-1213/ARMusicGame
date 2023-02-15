@@ -51,7 +51,7 @@ public class BuildingsGeospatialController : MonoBehaviour
         
         if (IsExistGeoSpatialAnchor(latitude, longitude, altitude))
         {
-            Debug.Log("Adjust position and rotation.");
+            //Debug.Log("Adjust position and rotation.");
             Adjust();
         }
     }

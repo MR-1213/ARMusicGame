@@ -5,49 +5,66 @@ using UnityEngine;
 public class NotesGenerator : MonoBehaviour
 {
     [SerializeField] private SoundController soundController;
-    public RhythmObject[] rhythmObject = new RhythmObject[3];
-    [SerializeField] private GameObject gameQuad;
-    [SerializeField] private GameObject roadOrange;
-    [SerializeField] private GameObject roadBlue;
-    [SerializeField] private GameObject roadGreen;
-    [SerializeField] private GameObject roadPink;
+    [SerializeField] private RhythmObject[] rhythmObjects = new RhythmObject[6];
 
+    [Header("ノーツの出現ポイント")]
+    [SerializeField] private GameObject originOrange;
+    [SerializeField] private GameObject originBlue;
+    [SerializeField] private GameObject originGreen;
+    [SerializeField] private GameObject originPink;
+    [SerializeField] private GameObject frame;
+
+    [Header("ノーツ")]
     [SerializeField] private GameObject notesPink;
     [SerializeField] private GameObject notesGreen;
     [SerializeField] private GameObject notesBlue;
     [SerializeField] private GameObject notesOrange;
 
     //public GameObject endButton;
+    //ノーツを出現させるかを決めるbool値。trueで出現する。
     private bool isActive = false;
+    //ノーツの生成間隔
+    private float generateTime = 2.0f;
 
     private void Start()
     {
         //endButton.SetActive(false);
+        //コルーチンスタート
         StartCoroutine(GetRondomNum());
     }
 
+    /// <summary>
+    /// ゲームがスタートしたときに行う処理
+    /// </summary>
     public void OnStartButton()
     {
         isActive = true;
         //endButton.SetActive(true);
         soundController.MusicPlay();
-        for(int i = 0; i < rhythmObject.Length; i++)
+        for(int i = 0; i < rhythmObjects.Length; i++)
         {
-            rhythmObject[i].IsActive(true);
+            rhythmObjects[i].IsActive(true);
         }
     }
 
+    /// <summary>
+    /// ゲームが終了したときに行う処理
+    /// </summary>
     public void OnEndButton()
     {
         isActive = false;
         soundController.MusicStop();
         //endButton.SetActive(false);
-        for(int i = 0; i < rhythmObject.Length; i++)
+        for(int i = 0; i < rhythmObjects.Length; i++)
         {
-            rhythmObject[i].IsActive(false);
+            rhythmObjects[i].IsActive(false);
         }
     }
 
+    /// <summary>
+    /// 受け取った値0~4に応じて出現させるノーツを決める。4の場合は出現させない。
+    /// </summary>
+    /// <param name="num"></param>
     private void GenerateNotes(int num)
     {
         if(!(0 <= num && num <= 4))
@@ -59,29 +76,41 @@ public class NotesGenerator : MonoBehaviour
         switch(num)
         {
             case 0:
-                Instantiate(notesOrange, roadOrange.transform.position + new Vector3(0, 5.0f, 0), Quaternion.Euler(180f, 14.851f, 0f), gameQuad.transform);
+                Instantiate(notesOrange, originOrange.transform.position, Quaternion.identity);
                 break;
             case 1:
-                Instantiate(notesBlue, roadBlue.transform.position + new Vector3(0, 5.0f, 0), Quaternion.identity, gameQuad.transform);
+                Instantiate(notesBlue, originBlue.transform.position, Quaternion.identity);
                 break;
             case 2:
-                Instantiate(notesGreen, roadGreen.transform.position + new Vector3(0, 5.0f, 0), Quaternion.identity, gameQuad.transform);
+                Instantiate(notesGreen, originGreen.transform.position, Quaternion.identity);
                 break;
             case 3:
-                Instantiate(notesPink, roadPink.transform.position + new Vector3(0, 5.0f, 0), Quaternion.identity, gameQuad.transform);
+                Instantiate(notesPink, originPink.transform.position, Quaternion.identity);
                 break;
             case 4:
                 break; //StartButtonを押すまで何も生成しない。
         }
 
         return;
+        //notesPink, roadPink.transform.position, Quaternion.identity, gameQuad.transform
     }
 
+    /// <summary>
+    /// generateTimeごとにノーツを生成するための値を決める。
+    /// isActive変数がfalseの場合は生成しないことを示す値である4をセットする。
+    /// </summary>
+    /// <returns></returns>
     IEnumerator GetRondomNum()
     {
+        if(generateTime <= 0)
+        {
+            Debug.LogError("ノーツの生成間隔が0秒以下です。正の値を指定してください。");
+            yield break;
+        }
+
         while(true)
         {
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(generateTime);
             int num;
             if(isActive)
             {
@@ -92,7 +121,7 @@ public class NotesGenerator : MonoBehaviour
                 num = 4;
             }
             
-            GenerateNotes(num);
+            GenerateNotes(num); //値に応じたノーツを生成
         }
     }
 }

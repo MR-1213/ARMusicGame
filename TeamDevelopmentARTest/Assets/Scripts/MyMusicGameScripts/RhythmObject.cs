@@ -8,18 +8,20 @@ using DG.Tweening;
 
 public class RhythmObject : MonoBehaviour
 {
-    private List<Transform> childrenObj = new List<Transform>();
+    private List<Transform> grandchildrenObj = new List<Transform>();
     private Dictionary<int, GameObject> activeObjects = new Dictionary<int, GameObject>();
     private int MinimumRangeValue;
     private int MaximumRangeValue;
     private bool isEnable = false;
+
+    
 
     private void Start()
     {
         foreach(Transform child in GetComponentsInChildren<Transform>(true))
         {
             if(child.gameObject == this.gameObject) continue;
-            childrenObj.Add(child);
+            grandchildrenObj.Add(child);
         }
 
         switch(this.gameObject.name)
@@ -82,7 +84,7 @@ public class RhythmObject : MonoBehaviour
 
         if(!isEnable) return false;
 
-        foreach(Transform child in childrenObj)
+        foreach(Transform child in grandchildrenObj)
         {
             Match match = Regex.Match(child.name, "[0-9]+");
             if(match.Success)
@@ -91,7 +93,6 @@ public class RhythmObject : MonoBehaviour
 
                 if(objectIndex <= index)
                 {
-                    Debug.Log(this.gameObject.name + ":" + child.gameObject.name + ":" + objectIndex);
                     activeObjects.Add(objectIndex, child.gameObject);
                 }
             }

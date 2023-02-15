@@ -6,6 +6,8 @@ TagManager:
   tags:
   - resetbox
   - StartButton
+  - Origin
+  - Destination
   layers:
   - Default
   - TransparentFX
