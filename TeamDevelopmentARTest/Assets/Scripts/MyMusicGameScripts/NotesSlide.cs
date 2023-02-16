@@ -10,10 +10,12 @@ public class NotesSlide : MonoBehaviour
     public GameObject[] origins = new GameObject[4];
     [Header("移動先。それぞれにDestinaitonのタグをつける必要あり")]
     public GameObject[] destinations = new GameObject[8];
-    private Vector3[] originAndDestination = new Vector3[2];
+    private Vector3[] originAndDestination = new Vector3[3];
+    [SerializeField] private GameObject generatePos;
 
     private void Start()
     {
+        generatePos = GameObject.Find("GeneratePosCube");
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Origin");
         if(temp.Length > 4)
         {
@@ -74,18 +76,20 @@ public class NotesSlide : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        originAndDestination[0] = generatePos.transform.position;
+
         foreach(GameObject origin in origins)
         {
-            if(origin.name == targetOriginName) originAndDestination[0] = origin.transform.position;
+            if(origin.name == targetOriginName) originAndDestination[1] = origin.transform.position;
         }
         foreach(GameObject destination in destinations)
         {
-            if(destination.name == targetDestinationName) originAndDestination[1] = destination.transform.position;
+            if(destination.name == targetDestinationName) originAndDestination[2] = destination.transform.position;
         }
 
         transform.DOPath(
             originAndDestination,
-            5.0f
+            7.0f
         );
         
     }

@@ -127,11 +127,11 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// </summary>
         public void Awake()
         {
-            // Lock screen to portrait.
-            Screen.autorotateToLandscapeLeft = false;
-            Screen.autorotateToLandscapeRight = false;
+            //スクリーンの向きを固定する
+            Screen.autorotateToLandscapeLeft = true;
+            Screen.autorotateToLandscapeRight = true;
             Screen.autorotateToPortraitUpsideDown = false;
-            Screen.orientation = ScreenOrientation.Portrait;
+            Screen.orientation = ScreenOrientation.AutoRotation;
 
             // Enable geospatial sample to target 60fps camera capture frame rate
             // on supported devices.

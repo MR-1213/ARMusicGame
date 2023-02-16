@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7909828242221150723}
   - component: {fileID: 3864558689952793462}
   - component: {fileID: 9159280151712991375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: B_MusicSphereOrange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5687430999890409442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -143,6 +143,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  generatePos: {fileID: 0}
 --- !u!114 &3864558689952793462
 MonoBehaviour:
   m_ObjectHideFlags: 0
