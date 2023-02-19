@@ -7,88 +7,42 @@ using DG.Tweening;
 public class NotesSlide : MonoBehaviour
 {
     [Header("出現場所。それぞれにOriginのタグをつける必要あり")]
-    public GameObject[] origins = new GameObject[4];
+    [SerializeField] private GameObject origin;
     [Header("移動先。それぞれにDestinaitonのタグをつける必要あり")]
-    public GameObject[] destinations = new GameObject[8];
-    private Vector3[] originAndDestination = new Vector3[3];
+    [SerializeField] private GameObject[] destinations = new GameObject[2];
+    //ノーツの移動経路(0:出現場所, 1:中継地点, 2:目的地)
+    private Vector3[] notesPath = new Vector3[3];
+    //出現場所となるオブジェクト
     [SerializeField] private GameObject generatePos;
 
     private void Start()
     {
-        generatePos = GameObject.Find("GeneratePosCube");
-        GameObject[] temp = GameObject.FindGameObjectsWithTag("Origin");
-        if(temp.Length > 4)
+        generatePos = GameObject.Find("GeneratePos");
+
+        GameObject target = GameObject.Find("Origin");
+        origin = target;
+
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Destination");
+        if(targets.Length > 2)
         {
-            Debug.LogError("Originタグが付いたオブジェクトが5つ以上あります。4つ以下にしてください。");
+            Debug.LogError("Destinationタグが付いたオブジェクトが" + targets.Length + "つ以上あります。2つ以下にしてください。");
             Destroy(this.gameObject);
         }
         else
         {
-            origins = temp;
+            destinations = targets;
         }
 
-        temp = GameObject.FindGameObjectsWithTag("Destination");
-        if(temp.Length > 8)
-        {
-            Debug.LogError("Destinationタグが付いたオブジェクトが9つ以上あります。8つ以下にしてください。");
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            destinations = temp;
-        }
+        //ノーツの移動経路を設定
+        notesPath[0] = generatePos.transform.position;
 
-        string targetOriginName;
-        string targetDestinationName;
+        notesPath[1] = origin.transform.position;
 
-        Debug.Log(this.gameObject.name);
-        string thisGameObjectName = this.gameObject.name;
-        string fixedName = thisGameObjectName.Replace("(Clone)", "");
-        Debug.Log(fixedName);
+        notesPath[2] = (Random.Range(0,2) == 0) ? destinations[0].transform.position : destinations[1].transform.position;
 
-        switch(fixedName)
-        {
-            case "B_MusicSphereOrange":
-                targetOriginName = "Orange";
-                targetDestinationName = (Random.Range(0, 2) == 0) ? "LeftOrange" : "RightOrange";
-                break;
-            case "B_MusicSphereBlue":
-                targetOriginName = "Blue";
-                targetDestinationName = (Random.Range(0, 2) == 0) ? "LeftBlue" : "RightBlue";
-                break;
-            case "B_MusicSphereGreen":
-                targetOriginName = "Green";
-                targetDestinationName = (Random.Range(0, 2) == 0) ? "LeftGreen" : "RightGreen";
-                break;
-            case "B_MusicSpherePink":
-                targetOriginName = "Pink";
-                targetDestinationName = (Random.Range(0, 2) == 0) ? "LeftPink" : "RightPink";
-                break;
-            default:
-                targetOriginName = "Error";
-                targetDestinationName = "Error";
-                break;
-        }
-
-        if(targetOriginName == "Error" || targetDestinationName == "Error")
-        {
-            Debug.LogError("ノーツの名前、もしくはOrigin,Destinaionのいずれかの名前が不適切です。");
-            Destroy(this.gameObject);
-        }
-
-        originAndDestination[0] = generatePos.transform.position;
-
-        foreach(GameObject origin in origins)
-        {
-            if(origin.name == targetOriginName) originAndDestination[1] = origin.transform.position;
-        }
-        foreach(GameObject destination in destinations)
-        {
-            if(destination.name == targetDestinationName) originAndDestination[2] = destination.transform.position;
-        }
-
+        //DOTWEENで移動させる。
         transform.DOPath(
-            originAndDestination,
+            notesPath,
             7.0f
         );
         
