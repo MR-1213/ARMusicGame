@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class NotesGenerator : MonoBehaviour
 {
-    [SerializeField] private SoundController soundController;
-    [SerializeField] private RhythmObject[] rhythmObjects = new RhythmObject[6];
 
     [Header("ノーツの出現ポイント")]
     [SerializeField] private GameObject originOrange;
     [SerializeField] private GameObject originBlue;
     [SerializeField] private GameObject originGreen;
     [SerializeField] private GameObject originPink;
-    [SerializeField] private GameObject frame;
 
     [Header("ノーツ")]
     [SerializeField] private GameObject notesPink;
@@ -20,7 +17,6 @@ public class NotesGenerator : MonoBehaviour
     [SerializeField] private GameObject notesBlue;
     [SerializeField] private GameObject notesOrange;
 
-    //public GameObject endButton;
     //ノーツを出現させるかを決めるbool値。trueで出現する。
     private bool isActive = false;
     //ノーツの生成間隔
@@ -28,7 +24,6 @@ public class NotesGenerator : MonoBehaviour
 
     private void Start()
     {
-        //endButton.SetActive(false);
         //コルーチンスタート
         StartCoroutine(GetRondomNum());
     }
@@ -39,12 +34,6 @@ public class NotesGenerator : MonoBehaviour
     public void OnStartButton()
     {
         isActive = true;
-        //endButton.SetActive(true);
-        soundController.MusicPlay();
-        for(int i = 0; i < rhythmObjects.Length; i++)
-        {
-            rhythmObjects[i].IsActive(true);
-        }
     }
 
     /// <summary>
@@ -53,12 +42,6 @@ public class NotesGenerator : MonoBehaviour
     public void OnEndButton()
     {
         isActive = false;
-        soundController.MusicStop();
-        //endButton.SetActive(false);
-        for(int i = 0; i < rhythmObjects.Length; i++)
-        {
-            rhythmObjects[i].IsActive(false);
-        }
     }
 
     /// <summary>

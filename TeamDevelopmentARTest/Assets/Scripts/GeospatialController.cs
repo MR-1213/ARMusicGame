@@ -47,7 +47,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         public ARCoreExtensions ARCoreExtensions;
 
-        public NotesGenerator notesGenerator;
+        public GamePlayManager gamePlayManager;
 
 
         [Header("UI Elements")]
@@ -325,6 +325,12 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             );
         }
 
+        /// <summary>
+        /// 位置情報が正確であるときに機能する。
+        /// スクリーンをタップしたときにタップしたオブジェクトについているタグによって機能を分ける。
+        /// </summary>
+        /// <param name="position"></param>
+
         private void HandleScreenTap(Vector2 position)
         {
             //mainCameraのタグがついたオブジェクト(カメラ)からレイを飛ばす
@@ -334,9 +340,10 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             if(Physics.Raycast(ray, out hit))
             {
                 if(hit.collider == null) return;
+
                 if(hit.collider.CompareTag("StartButton"))
                 {
-                    notesGenerator.OnStartButton();
+                    gamePlayManager.GameStart();
                     hit.collider.gameObject.SetActive(false);
                 }
             }

@@ -7,6 +7,7 @@ using UnityEngine.XR.ARSubsystems;
 
 public class SoundController : MonoBehaviour
 {
+    
     [SerializeField] private ARAnchorManager arAnchorManager;
     [SerializeField] private AREarthManager arEarthManager;
 
@@ -20,6 +21,7 @@ public class SoundController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    /*
     private void Update() 
     {
         //UnityEditorではAREarthManagerが動作しないのでスキップ
@@ -111,6 +113,7 @@ public class SoundController : MonoBehaviour
     {
         this.transform.SetPositionAndRotation(anchor.transform.position,anchor.transform.rotation);
     }
+    */
 
     public void MusicPlay()
     {
