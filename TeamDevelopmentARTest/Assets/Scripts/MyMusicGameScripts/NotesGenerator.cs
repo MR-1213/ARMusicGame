@@ -6,10 +6,7 @@ public class NotesGenerator : MonoBehaviour
 {
 
     [Header("ノーツの出現ポイント")]
-    [SerializeField] private GameObject originOrange;
-    [SerializeField] private GameObject originBlue;
-    [SerializeField] private GameObject originGreen;
-    [SerializeField] private GameObject originPink;
+    [SerializeField] private GameObject generatePoint;
 
     [Header("ノーツ")]
     [SerializeField] private GameObject notesPink;
@@ -59,16 +56,16 @@ public class NotesGenerator : MonoBehaviour
         switch(num)
         {
             case 0:
-                Instantiate(notesOrange, originOrange.transform.position, Quaternion.identity);
+                Instantiate(notesOrange, generatePoint.transform.position, Quaternion.identity);
                 break;
             case 1:
-                Instantiate(notesBlue, originBlue.transform.position, Quaternion.identity);
+                Instantiate(notesBlue, generatePoint.transform.position, Quaternion.identity);
                 break;
             case 2:
-                Instantiate(notesGreen, originGreen.transform.position, Quaternion.identity);
+                Instantiate(notesGreen, generatePoint.transform.position, Quaternion.identity);
                 break;
             case 3:
-                Instantiate(notesPink, originPink.transform.position, Quaternion.identity);
+                Instantiate(notesPink, generatePoint.transform.position, Quaternion.identity);
                 break;
             case 4:
                 break; //StartButtonを押すまで何も生成しない。

@@ -17,7 +17,7 @@ public class NotesSlide : MonoBehaviour
 
     private void Start()
     {
-        generatePos = GameObject.Find("GeneratePos");
+        generatePos = GameObject.Find("GenerationPoint");
 
         GameObject target = GameObject.Find("Origin");
         origin = target;

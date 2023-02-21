@@ -7,16 +7,17 @@ public class ObjectRotation : MonoBehaviour
 {
     private void Start() 
     {
-        StartCoroutine(RotateObject());
+        StartCoroutine(LoopRotation());
     }
 
-    IEnumerator RotateObject()
+    IEnumerator LoopRotation()
     {
         while(true)
         {
             yield return new WaitForSeconds(5.0f);
 
-            this.transform.DORotate(new Vector3(0, 360, 0), 3.0f, RotateMode.WorldAxisAdd);
+            transform.DORotate(new Vector3(0, 360, 0), 3.0f, RotateMode.WorldAxisAdd);
         }
     }
+
 }

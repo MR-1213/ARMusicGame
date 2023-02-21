@@ -25,7 +25,8 @@ public class ObjectChangeScale : MonoBehaviour
         transform.DOScale(new Vector3(this.transform.localScale.x * scaleValue,
                                       this.transform.localScale.y * scaleValue,
                                       this.transform.localScale.z * scaleValue), 2.0f)
-                                      .SetLoops(-1, LoopType.Yoyo);
+                                      .SetLoops(-1, LoopType.Yoyo)
+                                      .SetLink(gameObject);
         
     }
     

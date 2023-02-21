@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Collsionmusic : MonoBehaviour
 {
-    // Start is called before the first frame update
      //音データの再生装置を格納する
-    private new AudioSource audio;
+    private AudioSource audioSource;
     //音データを格納する
     [SerializeField]
     private AudioClip sound;
-     //Start is called before the first frame update
     private void Start()
     {
         //コンポーネントから再生装置を検出する
-        audio = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
     //衝突したとき
     private void OnTriggerEnter(Collider col)
@@ -23,7 +21,7 @@ public class Collsionmusic : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             //音を鳴らす
-            audio.PlayOneShot(sound);
+            audioSource.PlayOneShot(sound);
             //0.2秒後にオブジェクトが消える
             Destroy(gameObject, 0.2f);
         }
