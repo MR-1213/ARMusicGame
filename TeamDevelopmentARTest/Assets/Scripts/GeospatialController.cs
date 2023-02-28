@@ -120,7 +120,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         //保存時に新たにFirebaseに保存される緯度経度高度方位と画像
         //private GeospatialAnchorHistory newHistory;
 
-        public Text debugText;
+        [SerializeField] private Text localizingStatusText;
 
         /// <summary>
         /// 起動後最初に1回だけ実行する
@@ -152,6 +152,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             {
                 Debug.LogError("ARCoreExtensionsがnullです.");
             }
+
+            localizingStatusText.text = "位置情報取得中...";
 
         }
 
@@ -297,8 +299,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 //ローカライゼーションが完了したとき
                 isLocalizing = false;
                 localizationPassedTime = 0f;
-
-                //ResolveHistory();
+                //画面に完了したことを伝える
+                localizingStatusText.text = "完了";
 
             }//EventSystem.current.IsPointerOverGameObject : uGUI操作中であればtrueになる。引数はスマホ等では必要
             else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) && (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)))
@@ -307,22 +309,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 HandleScreenTap(Input.GetTouch(0).position);
             }
 
-            debugText.text = string.Format(
-                "Latitude/Longitude: {1}°, {2}°{0}" +
-                "Horizontal Accuracy: {3}m{0}" +
-                "Altitude: {4}m{0}" +
-                "Vertical Accuracy: {5}m{0}" +
-                "Heading: {6}°{0}" +
-                "Heading Accuracy: {7}°",
-                Environment.NewLine,
-                pose.Latitude.ToString("F6"),
-                pose.Longitude.ToString("F6"),
-                pose.HorizontalAccuracy.ToString("F6"),
-                pose.Altitude.ToString("F2"),
-                pose.VerticalAccuracy.ToString("F2"),
-                pose.Heading.ToString("F1"),
-                pose.HeadingAccuracy.ToString("F1")
-            );
         }
 
         /// <summary>

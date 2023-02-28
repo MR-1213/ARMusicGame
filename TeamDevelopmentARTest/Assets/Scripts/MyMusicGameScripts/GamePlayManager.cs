@@ -8,7 +8,8 @@ public class GamePlayManager : MonoBehaviour
 
     [Header("DecorationObjects/BackRhythmObjectsのオブジェクト群")]
     [SerializeField] private RhythmObject[] rhythmObjects = new RhythmObject[6];
-    [SerializeField] private SoundController soundController;
+    [Header("ゲーム音楽")]
+    [SerializeField] private AudioClip GameBGMClip;
     private NotesGenerator notesGenerator;
     private HoleGenerateController holeGenerateController;
 
@@ -25,7 +26,7 @@ public class GamePlayManager : MonoBehaviour
     public void GameStart()
     {
         notesGenerator.OnStartButton();
-        soundController.MusicPlay();
+        SoundDirector.instance.PlayBGM(GameBGMClip);
         holeGenerateController.GenerateHole();
         for(int i = 0; i < rhythmObjects.Length; i++)
         {
@@ -39,7 +40,7 @@ public class GamePlayManager : MonoBehaviour
     public void GameEnd()
     {
         notesGenerator.OnEndButton();
-        soundController.MusicStop();
+        SoundDirector.instance.StopBGM();
         for(int i = 0; i < rhythmObjects.Length; i++)
         {
             rhythmObjects[i].IsActive(false);
