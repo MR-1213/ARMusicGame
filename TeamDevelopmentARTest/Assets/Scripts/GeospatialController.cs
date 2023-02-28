@@ -299,8 +299,12 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 //ローカライゼーションが完了したとき
                 isLocalizing = false;
                 localizationPassedTime = 0f;
-                //画面に完了したことを伝える
-                localizingStatusText.text = "完了";
+
+                //より精度の高い位置情報が取得出来たら画面に完了したことを伝える
+                if(pose.HeadingAccuracy < 10 && pose.HorizontalAccuracy < 10)
+                {
+                    localizingStatusText.text = "完了";
+                }
 
             }//EventSystem.current.IsPointerOverGameObject : uGUI操作中であればtrueになる。引数はスマホ等では必要
             else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) && (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)))
