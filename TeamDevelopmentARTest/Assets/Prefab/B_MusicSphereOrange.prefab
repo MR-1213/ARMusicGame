@@ -129,11 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61304f92b65aa244dac6606f9579e9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generatePos: {fileID: 0}
   origin: {fileID: 0}
   destinations:
   - {fileID: 0}
   - {fileID: 0}
-  generatePos: {fileID: 0}
 --- !u!114 &3864558689952793462
 MonoBehaviour:
   m_ObjectHideFlags: 0

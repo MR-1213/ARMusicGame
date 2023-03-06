@@ -8,6 +8,7 @@ TagManager:
   - StartButton
   - Origin
   - Destination
+  - TapLine
   layers:
   - Default
   - TransparentFX

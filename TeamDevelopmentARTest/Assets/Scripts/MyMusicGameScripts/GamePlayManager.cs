@@ -8,15 +8,19 @@ public class GamePlayManager : MonoBehaviour
 
     [Header("DecorationObjects/BackRhythmObjectsのオブジェクト群")]
     [SerializeField] private RhythmObject[] rhythmObjects = new RhythmObject[6];
+    [Header("スコアスライダー")]
+    [SerializeField] private GameObject scoreSlider;
     [Header("ゲーム音楽")]
     [SerializeField] private AudioClip GameBGMClip;
     private NotesGenerator notesGenerator;
     private HoleGenerateController holeGenerateController;
+    private BackGroundFlashingController backGroundFlashingController;
 
     private void Start() 
     {
         notesGenerator = GetComponent<NotesGenerator>();
-        holeGenerateController = GetComponent<HoleGenerateController>();    
+        holeGenerateController = GetComponent<HoleGenerateController>();
+        backGroundFlashingController = GetComponent<BackGroundFlashingController>();    
         DOTween.SetTweensCapacity(200, 125);
     }
     
@@ -32,6 +36,8 @@ public class GamePlayManager : MonoBehaviour
         {
             rhythmObjects[i].IsActive(true);
         }
+        backGroundFlashingController.FlashingStart();
+        scoreSlider.SetActive(true);
     }
 
     /// <summary>
@@ -45,5 +51,7 @@ public class GamePlayManager : MonoBehaviour
         {
             rhythmObjects[i].IsActive(false);
         }
+        backGroundFlashingController.FlashingStop();
+        scoreSlider.SetActive(false);
     }
 }
