@@ -6,26 +6,25 @@ using DG.Tweening;
 
 public class NotesSlide : MonoBehaviour
 {
-    [Header("出現場所。それぞれにOriginのタグをつける必要あり")]
-    [SerializeField] private GameObject origin;
-    [Header("移動先。それぞれにDestinaitonのタグをつける必要あり")]
-    [SerializeField] private GameObject[] destinations = new GameObject[2];
-    //ノーツの移動経路(0:出現場所, 1:中継地点, 2:目的地)
-    private Vector3[] notesPath = new Vector3[3];
     //出現場所となるオブジェクト
     [SerializeField] private GameObject generatePos;
+    [SerializeField] private GameObject origin;
+
+    [Header("移動先。それぞれにDestinaitonのタグをつける必要あり")]
+    [SerializeField] private GameObject[] destinations = new GameObject[2];
+    private Vector3[] notesPath = new Vector3[3]; //ノーツの移動経路(0:出現場所, 1:中継地点, 2:目的地)
 
     private void Start()
     {
+        //最初の出現場所
         generatePos = GameObject.Find("GenerationPoint");
 
-        GameObject target = GameObject.Find("Origin");
-        origin = target;
+        origin = GameObject.Find("Origin");
 
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Destination");
-        if(targets.Length > 2)
+        if(targets.Length != 2)
         {
-            Debug.LogError("Destinationタグが付いたオブジェクトが" + targets.Length + "つ以上あります。2つ以下にしてください。");
+            Debug.LogError("Destinationタグが付いたオブジェクトは" + targets.Length + "つである必要があります。目的地に設定しているオブジェクトを確認してください。");
             Destroy(this.gameObject);
         }
         else

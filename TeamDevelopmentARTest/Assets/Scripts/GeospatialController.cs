@@ -301,7 +301,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 localizationPassedTime = 0f;
 
                 //より精度の高い位置情報が取得出来たら画面に完了したことを伝える
-                if(pose.HeadingAccuracy < 10 && pose.HorizontalAccuracy < 10)
+                if(pose.HeadingAccuracy < 8 && pose.HorizontalAccuracy < 8)
                 {
                     localizingStatusText.text = "完了";
                 }
