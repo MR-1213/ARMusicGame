@@ -5,21 +5,32 @@ using UnityEngine;
 public class BackGroundFlashingController : MonoBehaviour
 {
     [SerializeField] private GameObject[] roads;
+    private bool isEnd = false;
 
     public void FlashingStart()
     {
+        isEnd = false;
         StartCoroutine(RoadFlashing());
     }
 
     public void FlashingStop()
     {
-        StopCoroutine(RoadFlashing());
+        isEnd = true;
     }
 
     IEnumerator RoadFlashing()
     {
         while(true)
         {
+            if(isEnd)
+            {
+                foreach(GameObject road in roads)
+                {
+                    road.SetActive(false);
+                }
+                yield break;
+            }
+
             for(int i = 0; i < roads.Length - 1; i++)
             {
                 roads[i].SetActive(false);

@@ -334,7 +334,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 if(hit.collider.CompareTag("StartButton"))
                 {
                     gamePlayManager.GameStart();
-                    hit.collider.gameObject.SetActive(false);
                 }
             }
             /*

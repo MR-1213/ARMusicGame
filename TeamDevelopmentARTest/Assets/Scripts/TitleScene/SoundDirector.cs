@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundDirector : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SoundDirector : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
     }
 
     public void PlayBGM(AudioClip clip)
@@ -48,5 +50,22 @@ public class SoundDirector : MonoBehaviour
     public void StopBGM()
     {
         audioBGM.Stop();
+    }
+
+    public void ChangeMusicLoopFalse()
+    {
+        audioBGM.loop = false;
+    }
+
+    public bool isPlaying()
+    {
+        if(SceneManager.GetActiveScene().name == "Main")
+        {
+            return audioBGM.isPlaying;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
